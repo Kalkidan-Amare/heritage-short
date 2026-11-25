@@ -18,6 +18,7 @@ No keys? `PIPELINE_OFFLINE=1 make film` runs the whole thing with placeholders (
 |---|---|
 | `make setup` | creates `.venv` and installs `requirements.txt` |
 | `make smoke` | calls each provider once and logs the latency to `runs.jsonl` |
+| `make script` | drafts `storyboard.draft.json` from my notes in `story.md`; I edit it into `storyboard.json` |
 | `make radio` | narration over a placeholder bed on black: the first cut to test with people |
 | `make wan` | sends the `video` shots to Wan 2.2 on a Kaggle GPU and downloads the clips |
 | `make music` | makes the ACE-Step music candidates on Kaggle |

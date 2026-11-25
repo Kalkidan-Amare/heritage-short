@@ -1,7 +1,7 @@
 # One command per step. `make film` runs the whole pipeline from storyboard.json; every stage is cached.
 PY := .venv/bin/python
 
-.PHONY: setup smoke radio film wan music test
+.PHONY: setup smoke script radio film wan music test
 
 .venv/done: requirements.txt
 	python3 -m venv .venv
@@ -12,6 +12,9 @@ setup: .venv/done
 
 smoke: setup        ## call each provider once, log latency to runs.jsonl
 	$(PY) pipeline/smoke.py
+
+script: setup       ## draft storyboard.draft.json from story.md with Gemini
+	$(PY) pipeline/script.py
 
 radio: setup        ## narration over placeholder music on black
 	$(PY) pipeline/run.py radio
