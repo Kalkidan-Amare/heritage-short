@@ -1,4 +1,4 @@
-"""Stage: moving shots. A shot marked "video" uses its Wan 2.2 clip when the Kaggle job (pipeline/wan_kaggle.py)
+"""Stage: moving shots. A shot marked "video" uses its Wan 2.2 clip when the Kaggle job (pipeline/kaggle_jobs.py wan)
 has produced one for the current keyframe and motion prompt; otherwise, and for "kenburns" shots, it renders a slow
 pan and zoom over the keyframe. Every shot comes out as a square BASE x BASE clip at FPS, exactly its timeline length."""
 import time
@@ -10,7 +10,7 @@ ZOOM = 0.15  # total zoom over a Ken Burns shot
 
 
 def wan_key(shot, keyframe):
-    """Identifies the Wan clip for a shot; wan_kaggle.py names its outputs with the same key."""
+    """Identifies the Wan clip for a shot; kaggle_jobs.py names its outputs with the same key."""
     return key("wan2.2-ti2v-5b", shot["motion_prompt"], shot["seed"], keyframe)
 
 

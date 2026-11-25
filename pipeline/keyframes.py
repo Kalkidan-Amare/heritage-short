@@ -3,6 +3,7 @@ Keyframes are square with the subject centred, so one still serves both the 16:9
 import base64
 import io
 import os
+import textwrap
 import time
 
 import requests
@@ -45,10 +46,10 @@ def flux_cloudflare(model, prompt, seed, steps, reference=None):
     return retry(call)
 
 
-def placeholder(label, seed):
-    """Offline stand-in: a flat colour card with the item id, for tests and dry runs."""
+def placeholder(label, seed, prompt):
+    """Offline stand-in: a flat colour card with the item id and its prompt, for tests and dry runs."""
     img = Image.new("RGB", (SIZE, SIZE), ((seed * 53) % 200 + 30, (seed * 97) % 200 + 30, (seed * 31) % 200 + 30))
-    ImageDraw.Draw(img).text((40, 40), label, fill="white")
+    ImageDraw.Draw(img).multiline_text((40, 40), label + "\n\n" + "\n".join(textwrap.wrap(prompt, 60)), fill="white")
     buf = io.BytesIO()
     img.save(buf, "PNG")
     return buf.getvalue()
@@ -70,7 +71,7 @@ def generate(item, prompt, seed, board, reference=None):
         log(STAGE, item, model, params, 0, seed=seed, cache_hit=True)
         return path
     t = time.time()
-    data = placeholder(item, seed) if offline else flux_cloudflare(model, prompt, seed, steps, reference)
+    data = placeholder(item, seed, prompt) if offline else flux_cloudflare(model, prompt, seed, steps, reference)
     save_png(path, data)
     log(STAGE, item, model, params, time.time() - t, seed=seed)
     print(f"  keyframe {item}: {path.name}")

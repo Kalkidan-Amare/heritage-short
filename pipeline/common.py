@@ -12,8 +12,9 @@ import jsonschema
 from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "outputs"
-RUNS = ROOT / "runs.jsonl"
+# Tests point these at a temporary folder so they never touch the real outputs or call log.
+OUT = Path(os.environ.get("PIPELINE_OUT", ROOT / "outputs"))
+RUNS = Path(os.environ.get("PIPELINE_RUNS", ROOT / "runs.jsonl"))
 load_dotenv(ROOT / ".env")
 
 
