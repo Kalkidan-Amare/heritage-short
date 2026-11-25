@@ -1,7 +1,9 @@
 google-genai==3.6.1
 imageio-ffmpeg==0.8.1
 jsonschema==4.26.0
+kaggle==2.2.5
 pillow==13.0.0
+pytest==9.2.0
 python-dotenv==1.2.4
 requests==2.34.2
-pytest==9.2.0
+six==1.17.0  # kaggle 2.2.5 imports it but does not declare it

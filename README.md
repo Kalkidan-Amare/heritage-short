@@ -32,7 +32,7 @@ Order for a first full run: `make film` (keyframes), `make wan`, `make music`, p
 |---|---|
 | `GEMINI_API_KEY` | Google AI Studio |
 | `CF_ACCOUNT_ID`, `CF_API_TOKEN` | Cloudflare dashboard, a token with Workers AI permission |
-| Kaggle | phone-verified account, API token in `~/.kaggle/kaggle.json` |
+| Kaggle | phone-verified account; `kaggle auth login` (or a token in `~/.kaggle/access_token`), plus `KAGGLE_USERNAME` in `.env` |
 
 `.env` is git-ignored. Nothing in this repo holds a key.
 

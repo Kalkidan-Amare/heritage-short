@@ -6,23 +6,23 @@ import wave
 from common import Retryable, cached, key, load_storyboard, log, retry, run_ffmpeg
 
 STAGE = "narration"
-RATE = 24000  # Gemini TTS returns 16-bit mono PCM at 24 kHz
+RATE = 24000  # Gemini TTS audio is 16-bit mono at 24 kHz
 
 
 def tts_gemini(text, model, voice, style):
+    """One call per line. The text is read verbatim, so the delivery direction goes in speech_metadata.style."""
     from google import genai
     from google.genai import errors, types
 
-    client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
-    contents = f"{style}: {text}" if style else text
+    client = genai.Client(api_key=os.environ["GEMINI_API_KEY"], http_options={"api_version": "v1beta"})
+    part = types.Part(text=text, speech_metadata=types.SpeechMetadata(style=style) if style else None)
     config = types.GenerateContentConfig(
-        response_modalities=["AUDIO"],
-        speech_config=types.SpeechConfig(
-            voice_config=types.VoiceConfig(prebuilt_voice_config=types.PrebuiltVoiceConfig(voice_name=voice))))
+        response_modalities=["AUDIO"], speech_config=types.SpeechConfig(voice_config=types.VoiceConfig(voice=voice)))
 
     def call():
         try:
-            r = client.models.generate_content(model=model, contents=contents, config=config)
+            r = client.models.generate_content(model=model, contents=[types.Content(role="user", parts=[part])],
+                                               config=config)
         except errors.APIError as e:
             if e.code in (429, 500, 502, 503, 504):
                 raise Retryable(f"{e.code} {e.message}") from e
@@ -38,12 +38,16 @@ def tts_offline(text):
     return b"\0\0" * int(RATE * seconds)
 
 
-def write_wav(path, pcm):
+def write_wav(path, audio):
+    """Gemini 3.8 TTS returns a complete WAV; older models return bare 16-bit PCM, which needs a header."""
+    if audio[:4] == b"RIFF":
+        path.write_bytes(audio)
+        return
     with wave.open(str(path), "wb") as w:
         w.setnchannels(1)
         w.setsampwidth(2)
         w.setframerate(RATE)
-        w.writeframes(pcm)
+        w.writeframes(audio)
 
 
 def run(board):

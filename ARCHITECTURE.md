@@ -38,6 +38,12 @@ Kaggle (async):  kaggle_jobs.py wan   -> outputs/wan/<shot>-<key>.mp4  (read by 
 - Keys chain through files. A new image prompt changes one keyframe, so only that shot and the two exports rebuild. The audio mix stays cached. A new narration line re-takes one voice file, then the mix and exports.
 - `tests/test_cache.py` checks both cases and that an unchanged re-run calls nothing.
 
+## Kaggle jobs
+
+- `pipeline/kaggle_jobs.py` uploads the inputs as a private dataset, pushes `kaggle/<job>_kernel.py` as a T4 script kernel, polls every minute and downloads the output folder.
+- The kernel writes `timings.json` (per item: file, status, latency, seed, GPU, error). Each item becomes one `runs.jsonl` row with `gpu_minutes`. A failed item is logged and not moved, so the next run sends it again.
+- Wan settings (`shots.WAN`: model, size, frames, steps) are part of the clip key. Changing them re-makes every clip.
+
 ## Failure handling
 
 - Rate limits, timeouts and 5xx raise `Retryable`. `common.retry` tries 3 times with 4 s, 8 s backoff. Other errors stop the run with the provider's message.

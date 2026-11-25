@@ -25,12 +25,13 @@ def flux_cloudflare(model, prompt, seed, steps, reference=None):
             # FLUX.2 takes multipart form data and can be conditioned on reference images.
             fields = {"prompt": (None, prompt), "seed": (None, str(seed)), "width": (None, str(SIZE)),
                       "height": (None, str(SIZE))}
-            if steps:
+            if steps and "dev" in model:  # klein models run a fixed 4 steps
                 fields["steps"] = (None, str(steps))
             if reference is not None:
-                fields["input_image_0"] = ("ref.png", reference.read_bytes(), "image/png")
+                fields["input_image_0"] = ("ref.png", small_png(reference), "image/png")
             r = requests.post(url, headers=headers, files=fields, timeout=120)
         else:
+            # FLUX.1 schnell: JSON, max 8 steps, no size field (it returns its default square).
             body = {"prompt": prompt, "seed": seed}
             if steps:
                 body["steps"] = steps
@@ -41,9 +42,19 @@ def flux_cloudflare(model, prompt, seed, steps, reference=None):
             raise RuntimeError(f"Cloudflare {r.status_code}: {r.text[:500]}")
         if r.headers.get("content-type", "").startswith("image/"):
             return r.content
-        return base64.b64decode(r.json()["result"]["image"])
+        body = r.json()
+        return base64.b64decode(body.get("result", body)["image"])
 
     return retry(call)
+
+
+def small_png(path):
+    """FLUX.2 reference images must be under 512x512."""
+    img = Image.open(path).convert("RGB")
+    img.thumbnail((511, 511))
+    buf = io.BytesIO()
+    img.save(buf, "PNG")
+    return buf.getvalue()
 
 
 def placeholder(label, seed, prompt):
@@ -56,7 +67,11 @@ def placeholder(label, seed, prompt):
 
 
 def save_png(path, data):
-    Image.open(io.BytesIO(data)).convert("RGB").resize((SIZE, SIZE)).save(path, "PNG")
+    """Centre-crop to square (FLUX.2 defaults to 1024x768 if a size is ignored), then scale to SIZE."""
+    img = Image.open(io.BytesIO(data)).convert("RGB")
+    side = min(img.size)
+    left, top = (img.width - side) // 2, (img.height - side) // 2
+    img.crop((left, top, left + side, top + side)).resize((SIZE, SIZE), Image.LANCZOS).save(path, "PNG")
 
 
 def generate(item, prompt, seed, board, reference=None):

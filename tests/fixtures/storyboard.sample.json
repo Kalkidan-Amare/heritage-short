@@ -7,8 +7,8 @@
   "style_block": "warm hand-painted illustration, soft golden light, muted earth tones, gentle film grain",
   "character": {"name": "Abebe", "description": "a man in his thirties with a short beard and a grey work coat",
                 "reference_prompt": "character sheet, front view and side view, plain background", "seed": 7},
-  "models": {"image": "@cf/black-forest-labs/flux-1-schnell", "image_steps": 4, "tts": "gemini-2.5-flash-preview-tts",
-             "tts_voice": "Kore", "tts_style": "Say calmly and warmly", "video": "wan2.2-ti2v-5b", "music": "ace-step-1.5"},
+  "models": {"image": "@cf/black-forest-labs/flux-1-schnell", "image_steps": 4, "tts": "gemini-3.8-flash-tts",
+             "tts_voice": "Kore", "tts_style": "calm, warm, unhurried storyteller", "video": "wan2.2-ti2v-5b", "music": "ace-step-1.5"},
   "shots": [
     {"id": "s01", "duration": 5, "reason": "Establish the street", "shot_size": "wide", "image_prompt": "a small repair shop on a busy street at dawn",
      "motion": "kenburns", "kenburns": {"zoom": "in", "pan": "none"}, "narration": "Every morning the shop opened before the sun.",

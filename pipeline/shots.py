@@ -9,9 +9,13 @@ STAGE = "shots"
 ZOOM = 0.15  # total zoom over a Ken Burns shot
 
 
+# TI2V-5B accepts only 1280*704 or 704*1280. 121 frames is 5 s at 24 fps. Changing any of these re-makes every clip.
+WAN = {"model": "Wan2.2-TI2V-5B", "size": "1280*704", "frames": 121, "steps": 30}
+
+
 def wan_key(shot, keyframe):
     """Identifies the Wan clip for a shot; kaggle_jobs.py names its outputs with the same key."""
-    return key("wan2.2-ti2v-5b", shot["motion_prompt"], shot["seed"], keyframe)
+    return key(WAN, shot["motion_prompt"], shot["seed"], keyframe)
 
 
 def wan_clip(shot, keyframe):
