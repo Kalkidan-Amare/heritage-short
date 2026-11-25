@@ -1,0 +1,25 @@
+{
+  "title": "Sample: the radio repairman",
+  "logline": "Test fixture only. Not the real film.",
+  "language": {"code": "en", "name": "English"},
+  "audience": "Test fixture",
+  "intent": "Exercise every stage offline",
+  "style_block": "warm hand-painted illustration, soft golden light, muted earth tones, gentle film grain",
+  "character": {"name": "Abebe", "description": "a man in his thirties with a short beard and a grey work coat",
+                "reference_prompt": "character sheet, front view and side view, plain background", "seed": 7},
+  "models": {"image": "@cf/black-forest-labs/flux-1-schnell", "image_steps": 4, "tts": "gemini-2.5-flash-preview-tts",
+             "tts_voice": "Kore", "tts_style": "Say calmly and warmly", "video": "wan2.2-ti2v-5b", "music": "ace-step-1.5"},
+  "shots": [
+    {"id": "s01", "duration": 5, "reason": "Establish the street", "shot_size": "wide", "image_prompt": "a small repair shop on a busy street at dawn",
+     "motion": "kenburns", "kenburns": {"zoom": "in", "pan": "none"}, "narration": "Every morning the shop opened before the sun.",
+     "subtitle_en": "Every morning the shop opened before the sun.", "seed": 11},
+    {"id": "s02", "duration": 4, "reason": "Meet him", "shot_size": "medium", "shows_character": true, "image_prompt": "a man bent over a workbench full of radios",
+     "motion": "video", "motion_prompt": "his hands turn a dial slowly, fixed camera", "narration": "My father could make any radio sing again, even the ones everyone else had given up on long ago.",
+     "subtitle_en": "My father could make any radio sing again, even the ones everyone else had given up on long ago.", "seed": 12},
+    {"id": "s03", "duration": 4, "reason": "Close on the craft", "shot_size": "close", "image_prompt": "close-up of a glowing radio dial",
+     "motion": "kenburns", "kenburns": {"zoom": "out", "pan": "left"}, "narration": "", "subtitle_en": "", "seed": 13}
+  ],
+  "music": {"caption": "gentle acoustic guitar and soft strings, warm, nostalgic, sparse", "bpm": 72, "key": "A minor",
+            "duration": 30, "instrumental": true, "candidates": 3, "chosen": null, "seed": 42},
+  "end_card": {"text": "Made with AI. Images, motion, voice and music were generated.", "duration": 3}
+}

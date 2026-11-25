@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "storyboard.schema.json",
+  "title": "Heritage Short storyboard",
+  "description": "The contract between every pipeline stage. Each stage reads this file and writes only its own outputs.",
+  "type": "object",
+  "required": ["title", "language", "audience", "intent", "style_block", "character", "models", "shots", "music", "end_card"],
+  "additionalProperties": false,
+  "properties": {
+    "title": {"type": "string", "minLength": 1},
+    "logline": {"type": "string"},
+    "language": {
+      "type": "object",
+      "required": ["code", "name"],
+      "additionalProperties": false,
+      "properties": {
+        "code": {"type": "string", "pattern": "^[a-z]{2,3}$", "description": "ISO 639 code of the narration language"},
+        "name": {"type": "string"}
+      }
+    },
+    "audience": {"type": "string", "minLength": 1, "description": "Who watches, and where"},
+    "intent": {"type": "string", "minLength": 1, "description": "What they should feel or understand at the end"},
+    "style_block": {"type": "string", "minLength": 1, "description": "Fixed look description appended to every image prompt"},
+    "character": {
+      "type": "object",
+      "required": ["name", "description", "reference_prompt", "seed"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {"type": "string"},
+        "description": {"type": "string", "minLength": 1, "description": "Appended to every prompt of a shot that shows the character"},
+        "reference_prompt": {"type": "string", "minLength": 1},
+        "seed": {"$ref": "#/$defs/seed"}
+      }
+    },
+    "models": {
+      "type": "object",
+      "required": ["image", "tts", "tts_voice", "video", "music"],
+      "additionalProperties": false,
+      "properties": {
+        "text": {"type": "string"},
+        "image": {"type": "string", "description": "Cloudflare Workers AI model id"},
+        "image_steps": {"type": "integer", "minimum": 1, "maximum": 50},
+        "tts": {"type": "string", "description": "Gemini TTS model id"},
+        "tts_voice": {"type": "string"},
+        "tts_style": {"type": "string", "description": "Plain-language delivery instruction, e.g. calm, warm, unhurried"},
+        "video": {"type": "string"},
+        "music": {"type": "string"}
+      }
+    },
+    "shots": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "required": ["id", "duration", "reason", "image_prompt", "motion", "narration", "subtitle_en", "seed"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string", "pattern": "^s[0-9]{2}$"},
+          "duration": {"type": "number", "minimum": 2, "maximum": 15, "description": "Seconds on screen"},
+          "reason": {"type": "string", "minLength": 1, "description": "Why this shot exists"},
+          "shot_size": {"enum": ["extreme-wide", "wide", "medium", "medium-close", "close", "extreme-close", "insert"]},
+          "shows_character": {"type": "boolean", "default": false},
+          "image_prompt": {"type": "string", "minLength": 1},
+          "motion": {"enum": ["video", "kenburns"], "description": "video = image-to-video model, kenburns = pan and zoom over the keyframe"},
+          "motion_prompt": {"type": "string", "description": "Motion and camera only; the keyframe already holds the subject"},
+          "kenburns": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "zoom": {"enum": ["in", "out"]},
+              "pan": {"enum": ["none", "left", "right", "up", "down"]}
+            }
+          },
+          "narration": {"type": "string", "description": "Narration line in the film language; empty for a silent shot"},
+          "subtitle_en": {"type": "string", "description": "English subtitle for this shot's narration"},
+          "seed": {"$ref": "#/$defs/seed"}
+        },
+        "allOf": [{"if": {"properties": {"motion": {"const": "video"}}}, "then": {"required": ["motion_prompt"]}}]
+      }
+    },
+    "music": {
+      "type": "object",
+      "required": ["caption", "duration", "candidates", "seed"],
+      "additionalProperties": false,
+      "properties": {
+        "caption": {"type": "string", "minLength": 1, "description": "Style, mood, instruments, texture, era. Tempo and key go in their own fields."},
+        "bpm": {"type": "integer", "minimum": 40, "maximum": 200},
+        "key": {"type": "string"},
+        "duration": {"type": "number", "minimum": 10, "maximum": 240},
+        "instrumental": {"type": "boolean", "default": true},
+        "candidates": {"type": "integer", "minimum": 1, "maximum": 8},
+        "chosen": {"type": ["integer", "null"], "minimum": 0, "description": "Index of the chosen candidate; null uses the placeholder bed"},
+        "seed": {"$ref": "#/$defs/seed"},
+        "cues": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["at", "note"],
+            "additionalProperties": false,
+            "properties": {"at": {"type": "number", "minimum": 0}, "note": {"type": "string"}}
+          }
+        }
+      }
+    },
+    "end_card": {
+      "type": "object",
+      "required": ["text", "duration"],
+      "additionalProperties": false,
+      "properties": {
+        "text": {"type": "string", "minLength": 1},
+        "duration": {"type": "number", "minimum": 2, "maximum": 6}
+      }
+    }
+  },
+  "$defs": {
+    "seed": {"type": "integer", "minimum": 0, "maximum": 4294967295}
+  }
+}
