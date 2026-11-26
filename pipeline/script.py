@@ -13,7 +13,7 @@ import jsonschema
 
 from common import ROOT, Retryable, load_storyboard, log, retry
 
-MODEL = "gemini-3.8-flash"  # UNVERIFIED id: the brief names "Gemini 3.8 Flash"; smoke-test before relying on it
+MODEL = "gemini-3.8-flash"  # id per https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash (checked 2026-11-26)
 
 INSTRUCTIONS = """You draft a storyboard for a 60 to 90 second heritage short film.
 Return only JSON that matches the schema below. Rules:
