@@ -55,3 +55,16 @@ What broke, what I tried, what fixed it.
   transformers needs numpy 2 there (`outputs/kaggle/wan/output-run1/`). 233 s of setup, 0 GPU work done.
 - Fixed: Wan runs in its own Python 3.12 env made with `uv`, torch from the CUDA 12.6 index
   (`kaggle/wan_kernel.py` `setup`). Same idea as F8.
+- Second run (17:26): numpy was fixed, then `No module named 'einops'`. Wan's requirements do not list every import:
+  `import wan` also loads its speech and animate modules, which need decord, peft and librosa. The kernel now
+  installs those and runs `generate.py --help` in a loop, installing whatever it still reports missing.
+
+## F10: Wan's code assumes flash-attn and bf16, a T4 has neither (2026-11-26)
+- Found before the third run, by reading the code instead of waiting 20 minutes for Kaggle to show it.
+  `wan/modules/model.py` calls `flash_attention()` directly, and that function asserts flash-attn 2 is installed.
+  The kernel comment that said "falls back to SDPA" was wrong: only `attention()` falls back, and it is not used.
+- The model runs in bf16. A T4 has no bf16 tensor cores, so SDPA would take the slow math path and its memory
+  grows with the square of the tokens. At 121 frames that is about 27k tokens per call (31 latent frames x 22 x 40).
+- Changes: the kernel appends an SDPA `flash_attention` that keeps the key padding mask (the stock fallback drops
+  it), runs the DiT in fp16, and cuts the clip to 49 frames and 20 steps (`shots.WAN`). One shot (s06) is sent
+  first as a timing test (`WAN_SHOTS=s06 make wan`), with a 2.5 h cap per shot.

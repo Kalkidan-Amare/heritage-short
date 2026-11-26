@@ -44,6 +44,8 @@ Kaggle (async):  kaggle_jobs.py wan   -> outputs/wan/<shot>-<key>.mp4  (read by 
 - `pipeline/kaggle_jobs.py` uploads the inputs as a private dataset, pushes `kaggle/<job>_kernel.py` as a T4 script kernel, polls every minute and downloads the output folder.
 - The kernel writes `timings.json` (per item: file, status, latency, seed, GPU, error). Each item becomes one `runs.jsonl` row with `gpu_minutes`. A failed item is logged and not moved, so the next run sends it again.
 - Wan settings (`shots.WAN`: model, size, frames, steps) are part of the clip key. Changing them re-makes every clip.
+- Both models run in their own Python 3.12 env made with `uv` inside the kernel, because Kaggle's Python 3.13 breaks
+  them (F8, F9). The Wan kernel also patches attention to SDPA and fp16 for the T4 (F10).
 
 ## Failure handling
 

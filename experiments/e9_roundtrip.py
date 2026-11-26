@@ -20,7 +20,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "pipeline"))
 from common import OUT, Retryable, cached, key, load_storyboard, log, media_duration, retry  # noqa: E402
 import narration  # noqa: E402
 
-LISTENER = os.environ.get("E9_LISTENER", "gemini-3.8-flash")  # any audio-capable Gemini model
+# Listeners disagree a lot on the same take (a first probe: 1 to 6 wrong words on s07), so every take goes to
+# several, and a line counts as unclear only when all of them miss it. Comma list, any audio-capable Gemini model.
+LISTENERS = os.environ.get("E9_LISTENERS", "gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemini-3.6-flash").split(",")
+LISTENER = LISTENERS[0]
+UNCLEAR = 0.15  # CER above which a listener "missed" the line
 TTS_LITE = "gemini-3.8-flash-lite-tts"
 DIR = OUT / "experiments" / "e9"
 # Same sound, different letter: map the rarer series onto the common one, order by order (7 vowels each).
@@ -65,25 +69,44 @@ def gemini(contents, model=LISTENER):
                 raise Retryable(f"{e.code} {e.message}") from e
             raise
 
-    return retry(call, attempts=6, base_delay=15)
+    return retry(call, attempts=3, base_delay=10)
 
 
-def transcribe(wav, language):
+def transcribe(wav, language, model=LISTENER):
     from google.genai import types
 
     prompt = (f"Transcribe this {language} speech exactly as spoken, in the language's usual script. "
               "Output only the transcript, no translation, no notes.")
-    return gemini([types.Part.from_bytes(data=Path(wav).read_bytes(), mime_type="audio/wav"), prompt])
+    return gemini([types.Part.from_bytes(data=Path(wav).read_bytes(), mime_type="audio/wav"), prompt], model)
 
 
-def score(label, wav, ref, language, tts_model):
+def score(label, wav, ref, language, tts_model, listener=LISTENER):
     t = time.time()
-    hyp = transcribe(wav, language)
+    try:
+        hyp = transcribe(wav, language, listener)
+    except Exception as e:  # one overloaded listener should not end the run; the row records it
+        log("experiment-e9", label, listener, {"tts_model": tts_model, "language": language}, time.time() - t,
+            status="error", error=f"{type(e).__name__}: {e}"[:300])
+        print(f"{label:10} {listener:24} ERROR {e}"[:160])
+        return None
     c = cer(ref, hyp)
-    log("experiment-e9", label, LISTENER, {"tts_model": tts_model, "language": language}, time.time() - t,
+    log("experiment-e9", label, listener, {"tts_model": tts_model, "language": language}, time.time() - t,
         cer=round(c, 3), ref=ref, hyp=hyp, audio_s=round(media_duration(wav), 2))
-    print(f"{label:10} {tts_model:28} CER {c:5.1%}  {hyp}")
+    print(f"{label:10} {listener:24} {tts_model:28} CER {c:5.1%}  {hyp}")
     return c
+
+
+def report(rows):
+    """rows: (label, tts_model, listener, cer or None)."""
+    for tts in sorted({r[1] for r in rows}):
+        for li in LISTENERS:
+            cs = [r[3] for r in rows if r[1] == tts and r[2] == li and r[3] is not None]
+            if cs:
+                print(f"{tts:28} heard by {li:24} mean CER {sum(cs) / len(cs):5.1%} over {len(cs)} lines")
+    for label in dict.fromkeys(r[0] for r in rows):
+        cs = [r[3] for r in rows if r[0] == label and r[3] is not None]
+        if cs and min(cs) > UNCLEAR:
+            print(f"{label}: every listener missed it (best CER {min(cs):.1%})")
 
 
 def amharic():
@@ -95,10 +118,9 @@ def amharic():
         model = shot.get("tts_model", m["tts"])
         k = key(model, m["tts_voice"], m.get("tts_style", ""), board["language"]["code"], text)
         wav = cached("narration", shot["id"], k, "wav")
-        rows.append((shot["id"], model, score(shot["id"], wav, text, "Amharic", model)))
-    for model in sorted({r[1] for r in rows}):
-        cs = [r[2] for r in rows if r[1] == model]
-        print(f"{model}: mean CER {sum(cs) / len(cs):.1%} over {len(cs)} lines")
+        for li in LISTENERS:
+            rows.append((shot["id"], model, li, score(shot["id"], wav, text, "Amharic", model, li)))
+    report(rows)
 
 
 def languages():
@@ -106,6 +128,7 @@ def languages():
     m = board["models"]
     src = next(s for s in board["shots"] if s["id"] == "s07")["narration"]
     DIR.mkdir(parents=True, exist_ok=True)
+    rows = []
     for code, name in [("ti", "Tigrinya"), ("om", "Afaan Oromo"), ("so", "Somali")]:
         line_file = DIR / f"s07-{code}.txt"
         if not line_file.exists():
@@ -120,7 +143,9 @@ def languages():
             narration.write_wav(wav, narration.tts_gemini(line, TTS_LITE, m["tts_voice"], m.get("tts_style", "")))
             log("experiment-e9", f"tts-{code}", TTS_LITE, {"language": name, "chars": len(line)}, time.time() - t,
                 audio_s=round(media_duration(wav), 2))
-        score(f"s07-{code}", wav, line, name, TTS_LITE)
+        for li in LISTENERS:
+            rows.append((f"s07-{code}", TTS_LITE, li, score(f"s07-{code}", wav, line, name, TTS_LITE, li)))
+    report(rows)
 
 
 if __name__ == "__main__":

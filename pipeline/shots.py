@@ -10,7 +10,8 @@ ZOOM = 0.15  # total zoom over a Ken Burns shot
 
 
 # TI2V-5B accepts only 1280*704 or 704*1280. 121 frames is 5 s at 24 fps. Changing any of these re-makes every clip.
-WAN = {"model": "Wan2.2-TI2V-5B", "size": "1280*704", "frames": 121, "steps": 30}
+# 49 frames (2 s) and 20 steps fit a free T4 in fp16; the model's defaults (121 frames, 50 steps) do not (F10).
+WAN = {"model": "Wan2.2-TI2V-5B", "size": "1280*704", "frames": 49, "steps": 20}
 
 
 def wan_key(shot, keyframe):

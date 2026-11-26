@@ -116,6 +116,9 @@ def collect(out, dest, model, wall_s):
 def wan(board):
     frames = keyframes.run(board)
     todo = [s for s in board["shots"] if s["motion"] == "video" and not shots.wan_clip(s, frames[s["id"]])]
+    only = os.environ.get("WAN_SHOTS")  # e.g. WAN_SHOTS=s06 to send one shot as a timing test
+    if only:
+        todo = [s for s in todo if s["id"] in only.split(",")]
     if not todo:
         print("  every video shot already has a Wan clip for its current inputs")
         return []
