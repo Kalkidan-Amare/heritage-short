@@ -77,3 +77,11 @@ What broke, what I tried, what fixed it.
   trained on. Each try costs about 30 minutes of queue and setup, and the deadline was 4 hours away.
 - Decision: the film keeps Ken Burns motion from the keyframes. The end card no longer credits Wan
   (`storyboard.json` `end_card`). The Wan stage, kernel and cache stay in the repo for a bigger GPU.
+
+## F12: Cloudflare's output filter blocked the new s08 keyframe (2026-11-26)
+- Broke: after user test 2, the s08 prompt asked for "two Ethiopian neighbours ... with dark brown skin and Ethiopian
+  highland features". FLUX.2 klein on Cloudflare returned 400, code 3030: "Your output has been flagged". The
+  filter judges the image, not the text, and gives no reason.
+- Fixed: described the people by clothes and place instead of face (Habesha neighbours from Addis Ababa, a man in a
+  white gabi, a woman with braided hair). Same seed, passed on the next call, and the men no longer look South Asian.
+- Lesson: describe what people wear and where they are from, not their facial features.
