@@ -50,8 +50,9 @@
       "image_prompt": "Top-down view of a round flat metal roasting pan resting over glowing orange charcoal embers, filled with coffee beans transitioning from pale green to mottled brown and dark, subtle wisps of aromatic vapor rising.",
       "motion": "video",
       "motion_prompt": "The coffee beans tumble and slide across the hot metal pan while glowing embers flicker beneath; camera slowly descends toward the pan.",
-      "narration": "ጥሬው ቡና በምጣዱ ላይ ሲቆላ፥ ጠቁሮ እስኪፈነዳ ድረስ እንጠብቃለን።",
-      "subtitle_en": "We roast the green beans in the pan and wait until they turn dark and crack.",
+      "narration": "ቡናው በምጣዱ ላይ ይቆላል፤ እስኪጠቁር እንጠብቃለን።",
+      "subtitle_en": "The beans roast in the pan. We wait until they turn dark.",
+      "tts_model": "gemini-3.8-flash-lite-tts",
       "seed": 24918231
     },
     {
@@ -95,8 +96,9 @@
         "zoom": "in",
         "pan": "none"
       },
-      "narration": "በጀበናው ውስጥ ውኃውና ዱቄቱ በከሰሉ ረጋ ብለው ይፈላሉ። ፈንዲሻውም ይቀርባል።",
-      "subtitle_en": "In the clay pot, coffee and water boil gently on the coals while popcorn is served.",
+      "narration": "ጀበናው በከሰሉ ላይ ረጋ ብሎ ይፈላል። ፈንዲሻውም ይቀርባል።",
+      "subtitle_en": "The jebena boils gently on the coals, and the popcorn is served.",
+      "tts_model": "gemini-3.8-flash-lite-tts",
       "seed": 58291044
     },
     {
@@ -108,8 +110,9 @@
       "image_prompt": "Seven tiny round white porcelain cup shaped like a small bowl, the size of an egg cup, with no handles arranged in rows on a small low carved wooden tray, dark coffee being poured into them in a thin stream from the long neck of a black clay pot, steam rising, close view",
       "motion": "video",
       "motion_prompt": "Dark hot liquid flows in an unbroken stream from high above into the small cups, filling each consecutively; camera slowly tracks horizontally across the tray.",
-      "narration": "ሲኒዎቹ በረከቦቱ ላይ ቆመዋል፤ የመጀመሪያው ጽዋ አቦል ይባላል፥ ጠንካራና ንቁ።",
-      "subtitle_en": "The cups rest on the wooden tray; the first round is abol, bold and wakeful.",
+      "narration": "የመጀመሪያው ሲኒ አቦል ነው፤ ጠንካራና የሚያነቃ።",
+      "subtitle_en": "The first cup is abol, strong and awakening.",
+      "tts_model": "gemini-3.8-flash-lite-tts",
       "seed": 67182901
     },
     {
@@ -140,8 +143,9 @@
         "zoom": "in",
         "pan": "left"
       },
-      "narration": "ሁለተኛው ቶና ነው፤ ደጃፉ ክፍት ነው፥ መንገደኛውም ገብቶ ችግሩን ያወራል።",
-      "subtitle_en": "The second cup is tona; the doorway remains open for any passerby to share their burdens.",
+      "narration": "ሁለተኛው ቶና ነው፤ በሩ ክፍት ነው፥ መንገደኛም ይገባል።",
+      "subtitle_en": "The second cup is tona. The door stays open, and passersby come in.",
+      "tts_model": "gemini-3.8-flash-lite-tts",
       "seed": 89201944
     },
     {
@@ -153,8 +157,9 @@
       "image_prompt": "Close view of an elderly woman's hands passing one tiny round white porcelain cup shaped like a small bowl, the size of an egg cup, with no handle full of black coffee into the open hands of a young Ethiopian girl with dark brown skin and braided hair, both pairs of hands in warm charcoal light, the old woman's smiling face above, soft focus",
       "motion": "video",
       "motion_prompt": "Grandmother's hands gently pass the hot ceramic cup into the smaller hands of the youth, rising steam curling softly upward; camera stays centered on the exchange.",
-      "narration": "ሦስተኛው በረካ ነው፥ ምርቃቱ። ያለ እርሱ መሄድ አይቻልም። ይኸው ጽዋሽ።",
-      "subtitle_en": "The third cup is bereka, the blessing. No one departs before it. Here is your cup.",
+      "narration": "ሦስተኛው በረካ ነው፥ ምርቃቱ። ይኸው ሲኒሽ።",
+      "subtitle_en": "The third cup is bereka, the blessing. Here is your cup.",
+      "tts_model": "gemini-3.8-flash-lite-tts",
       "seed": 91823488
     },
     {
@@ -178,7 +183,7 @@
     "caption": "Acoustic traditional Ethiopian meditative theme featuring delicate krar lyre arpeggios, gentle breathy washint flute, soft clay pot percussion, and warm ambient drone creating a deeply reflective, nostalgic mood.",
     "bpm": 64,
     "key": "A minor (anchihoye pentatonic mode)",
-    "duration": 75,
+    "duration": 84,
     "instrumental": true,
     "candidates": 3,
     "chosen": 0,
@@ -204,6 +209,6 @@
   },
   "end_card": {
     "text": "Three Cups. Made with AI: script and voice by Gemini, images by FLUX.2, motion by Wan 2.2, music by ACE-Step.",
-    "duration": 5
+    "duration": 4
   }
 }

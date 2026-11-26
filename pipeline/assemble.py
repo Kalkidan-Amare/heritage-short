@@ -1,7 +1,8 @@
 """Stage: assembly. Lays narration on the timeline, ducks the score under it, normalises loudness, burns in
 English subtitles, appends the AI end card and exports 16:9 and 9:16. The radio cut is the same mix on black."""
-import time
+import re
 import textwrap
+import time
 
 from PIL import Image, ImageDraw, ImageFont
 
@@ -25,8 +26,15 @@ def subtitles(board, starts, narr_len):
         text = shot["subtitle_en"].strip()
         if not text:
             continue
-        lines = textwrap.wrap(text, 40)
-        chunks = [lines[i:i + 2] for i in range(0, len(lines), 2)]
+        # Break at sentence ends first, so a cue never ends mid-sentence with one stray word after it.
+        chunks = []
+        for sentence in re.split(r"(?<=[.;?!])\s+", text):
+            joined = textwrap.wrap(" ".join(chunks[-1] + [sentence]), 40) if chunks else []
+            if chunks and len(joined) <= 2:
+                chunks[-1] = joined
+            else:
+                lines = textwrap.wrap(sentence, 40)
+                chunks += [lines[i:i + 2] for i in range(0, len(lines), 2)]
         span = narr_len.get(shot["id"]) or shot["duration"] - 0.5
         words = [len(" ".join(c).split()) for c in chunks]
         t = starts[shot["id"]]

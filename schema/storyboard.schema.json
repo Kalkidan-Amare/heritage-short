@@ -64,6 +64,7 @@
           "shows_character": {"type": "boolean", "default": false},
           "image_prompt": {"type": "string", "minLength": 1},
           "motion": {"enum": ["video", "kenburns"], "description": "video = image-to-video model, kenburns = pan and zoom over the keyframe"},
+          "tts_model": {"type": "string", "description": "Overrides models.tts for this line only, e.g. when the main TTS model is out of quota"},
           "motion_prompt": {"type": "string", "description": "Motion and camera only; the keyframe already holds the subject"},
           "kenburns": {
             "type": "object",

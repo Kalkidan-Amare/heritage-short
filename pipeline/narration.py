@@ -53,12 +53,12 @@ def write_wav(path, audio):
 def run(board):
     m = board["models"]
     offline = os.environ.get("PIPELINE_OFFLINE") == "1"
-    model = "offline-silence" if offline else m["tts"]
     out = {}
     for shot in board["shots"]:
         text = shot["narration"].strip()
         if not text:
             continue
+        model = "offline-silence" if offline else shot.get("tts_model", m["tts"])
         k = key(model, m["tts_voice"], m.get("tts_style", ""), board["language"]["code"], text)
         path = cached(STAGE, shot["id"], k, "wav")
         params = {"voice": m["tts_voice"], "style": m.get("tts_style", ""), "chars": len(text)}
