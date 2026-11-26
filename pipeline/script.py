@@ -14,6 +14,16 @@ import jsonschema
 from common import ROOT, Retryable, load_storyboard, log, retry
 
 MODEL = "gemini-3.8-flash"  # id per https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash (checked 2026-11-26)
+# The first draft invented retired model ids (gemini-1.5-pro, svd-xt), so the models block is ours, not Gemini's.
+MODELS = {
+    "text": MODEL,
+    "image": "@cf/black-forest-labs/flux-2-klein-4b",  # takes reference images, so the character can stay the same
+    "tts": "gemini-3.8-flash-tts",
+    "tts_voice": "Gacrux",
+    "tts_style": "an elderly grandmother, warm, slow and tender, speaking to her grandchild",
+    "video": "wan2.2-ti2v-5b",
+    "music": "ace-step-1.5",
+}
 
 INSTRUCTIONS = """You draft a storyboard for a 60 to 90 second heritage short film.
 Return only JSON that matches the schema below. Rules:
@@ -49,7 +59,8 @@ def draft(notes, language, model):
             raise
         return r.text
 
-    return retry(call)
+    # Free-tier Gemini 3.8 answers 503 "high demand" for minutes at a time (FAILURES.md), so wait longer than the default.
+    return retry(call, attempts=6, base_delay=15)
 
 
 def main(notes_path="story.md"):
@@ -57,8 +68,19 @@ def main(notes_path="story.md"):
     language = next((ln.split(":", 1)[1].strip() for ln in notes.splitlines() if ln.lower().startswith("language:")),
                     "English")
     t = time.time()
-    text = draft(notes, language, MODEL)
+    try:
+        text = draft(notes, language, MODEL)
+    except Exception as e:
+        log("script", "storyboard", MODEL, {"notes_chars": len(notes), "language": language}, time.time() - t,
+            status="error", error=str(e)[:300])
+        raise
     out = ROOT / "storyboard.draft.json"
+    try:
+        board = json.loads(text)
+        board["models"] = MODELS
+        text = json.dumps(board, ensure_ascii=False, indent=2) + "\n"
+    except (json.JSONDecodeError, TypeError):
+        pass  # saved as is; validation below reports it
     out.write_text(text)
     try:
         board = load_storyboard(out)

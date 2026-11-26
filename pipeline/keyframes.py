@@ -31,8 +31,9 @@ def flux_cloudflare(model, prompt, seed, steps, reference=None):
                 fields["input_image_0"] = ("ref.png", small_png(reference), "image/png")
             r = requests.post(url, headers=headers, files=fields, timeout=120)
         else:
-            # FLUX.1 schnell: JSON, max 8 steps, no size field (it returns its default square).
-            body = {"prompt": prompt, "seed": seed}
+            # FLUX.1 schnell: JSON, max 8 steps, no size or seed field (a seed is rejected with 400; smoke run
+            # 2026-11-26), so its images are not reproducible and the cache is what keeps them stable.
+            body = {"prompt": prompt}
             if steps:
                 body["steps"] = steps
             r = requests.post(url, headers=headers, json=body, timeout=120)

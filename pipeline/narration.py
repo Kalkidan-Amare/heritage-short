@@ -29,7 +29,7 @@ def tts_gemini(text, model, voice, style):
             raise
         return r.candidates[0].content.parts[0].inline_data.data
 
-    return retry(call)
+    return retry(call, attempts=6, base_delay=15)  # free-tier 503s, see script.py
 
 
 def tts_offline(text):
