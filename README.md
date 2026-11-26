@@ -24,6 +24,7 @@ No keys? `PIPELINE_OFFLINE=1 make film` runs the whole thing with placeholders (
 | `make music` | makes the ACE-Step music candidates on Kaggle |
 | `make film` | the full film, both formats |
 | `make test` | schema and cache tests, offline |
+| `make cost` | per-stage calls, latency, GPU minutes and list-price cost from `runs.jsonl` |
 
 Order for a first full run: `make film` (keyframes), `make wan`, `make music`, pick a candidate in `storyboard.json` (`music.chosen`), `make film` again.
 

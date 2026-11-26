@@ -3,7 +3,7 @@ import os
 import time
 import wave
 
-from common import Retryable, cached, key, load_storyboard, log, retry, run_ffmpeg
+from common import Retryable, cached, key, load_storyboard, log, media_duration, retry, run_ffmpeg
 
 STAGE = "narration"
 RATE = 24000  # Gemini TTS audio is 16-bit mono at 24 kHz
@@ -76,6 +76,8 @@ def run(board):
                 run_ffmpeg(["-i", tmp, "-af", "silenceremove=start_periods=1:start_threshold=-45dB,"
                             "areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse", path])
                 tmp.unlink()
+            if not offline:
+                params["audio_s"] = round(media_duration(path), 2)  # what TTS is billed on, for costs.py
             log(STAGE, shot["id"], model, params, time.time() - t)
             print(f"  narration {shot['id']}: {path.name}")
         out[shot["id"]] = path

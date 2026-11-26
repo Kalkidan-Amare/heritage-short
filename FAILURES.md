@@ -14,3 +14,31 @@ What broke, what I tried, what fixed it.
 ## F3: offline test could not see a prompt change (2026-11-25)
 - Broke: the cache test changed one image prompt, but the offline placeholder image did not depend on the prompt, so the same bytes came out and nothing downstream rebuilt.
 - Fixed: the placeholder card now prints its prompt (`keyframes.placeholder`). The real model output always depends on the prompt, so this only affected offline runs.
+
+## F4: first radio cut ran 92.6 s, over the 90 s cap (2026-11-26)
+- Broke: every Amharic line ran past its shot. Gacrux with a "slow and tender" style speaks slowly; s05 took 10.5 s
+  and s06 11.0 s against 7 s and 8 s shots. `timeline()` holds a shot until its line ends, so the film grew.
+- Tried: a faster `tts_style` would re-voice all 10 lines (10 calls on a 10-per-day quota). Shortening only the
+  longest lines re-voices 5.
+- Fixed: cut s02, s05, s06, s08, s09 to their core meaning (s06 now "The first cup is abol, strong and awakening")
+  and the end card to 4 s. Film 74.5 s + 4 s card = 78.5 s. See E5 in EXPERIMENTS.md.
+
+## F5: Gemini TTS daily quota hit mid-run (2026-11-26)
+- Broke: `make radio` stopped with 429 "generate_content_free_tier_requests, limit: 10, model:
+  gemini-3.8-flash-tts". The day's 10 calls had gone on the first take of all lines plus retakes.
+- Tried: listed the TTS models the key can call (5), probed `gemini-3.8-flash-lite-tts` with one line: OK in 4.7 s.
+- Fixed: a per-shot `tts_model` override in the schema, so only the 5 new lines use lite and the other 5 keep their
+  cached full-model takes. The voice is the same Gacrux; by ear the lite take is slightly different but close.
+
+## F6: Kaggle kernels had no internet (2026-11-26)
+- Broke: both GPU kernels (Wan 2.2 and ACE-Step) failed on their first line: `git clone ... Could not resolve host:
+  github.com`. `enable_internet: true` is set in the kernel metadata, but Kaggle grants internet only to
+  phone-verified accounts.
+- Tried: read both kernel logs (`outputs/kaggle/*/output/*.log`) to confirm it was DNS, not code.
+- Status: waiting on phone verification. Until then video shots fall back to Ken Burns (`shots.py`) and music to the
+  placeholder bed, so `make film` still finishes.
+
+## F7: one stray word left alone on screen (2026-11-26)
+- Broke: the s01 subtitle split into "...the frankincense is burning. Come" and then "closer." for 0.5 s, because
+  cues were cut every two wrapped lines regardless of sentences.
+- Fixed: `assemble.subtitles` now breaks at sentence ends first and only wraps within a sentence.

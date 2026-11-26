@@ -2,7 +2,6 @@
 .venv/
 __pycache__/
 *.pyc
-# test-fixture runs; decide what real outputs to commit before the first push
+# generated media stays local; runs.jsonl is committed because it is the evidence for COSTS and EXPERIMENTS
 outputs/
-runs.jsonl
 storyboard.draft.json

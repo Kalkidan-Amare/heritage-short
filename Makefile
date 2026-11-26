@@ -1,7 +1,7 @@
 # One command per step. `make film` runs the whole pipeline from storyboard.json; every stage is cached.
 PY := .venv/bin/python
 
-.PHONY: setup smoke script radio film wan music test
+.PHONY: setup smoke script radio film wan music test cost
 
 .venv/done: requirements.txt
 	python3 -m venv .venv
@@ -30,3 +30,6 @@ music: setup        ## ACE-Step candidates on Kaggle
 
 test: setup         ## schema and cache tests, offline, no keys needed
 	$(PY) -m pytest -q tests
+
+cost: setup         ## per-stage latency, GPU minutes and list-price equivalent from runs.jsonl
+	$(PY) pipeline/costs.py

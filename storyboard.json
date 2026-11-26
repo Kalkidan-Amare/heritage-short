@@ -37,6 +37,7 @@
         "zoom": "in",
         "pan": "up"
       },
+      "focus_x": 0.2,
       "narration": "ነይ ልጄ፤ ሳሩ ተጎዝጉዟል፥ እጣኑም ይጨሳል። ቀረብ በይ።",
       "subtitle_en": "Come, my child. The grass is spread and the frankincense is burning. Come closer.",
       "seed": 10472911
@@ -143,6 +144,7 @@
         "zoom": "in",
         "pan": "left"
       },
+      "focus_x": 0.7,
       "narration": "ሁለተኛው ቶና ነው፤ በሩ ክፍት ነው፥ መንገደኛም ይገባል።",
       "subtitle_en": "The second cup is tona. The door stays open, and passersby come in.",
       "tts_model": "gemini-3.8-flash-lite-tts",
@@ -157,6 +159,7 @@
       "image_prompt": "Close view of an elderly woman's hands passing one tiny round white porcelain cup shaped like a small bowl, the size of an egg cup, with no handle full of black coffee into the open hands of a young Ethiopian girl with dark brown skin and braided hair, both pairs of hands in warm charcoal light, the old woman's smiling face above, soft focus",
       "motion": "video",
       "motion_prompt": "Grandmother's hands gently pass the hot ceramic cup into the smaller hands of the youth, rising steam curling softly upward; camera stays centered on the exchange.",
+      "focus_x": 0.85,
       "narration": "ሦስተኛው በረካ ነው፥ ምርቃቱ። ይኸው ሲኒሽ።",
       "subtitle_en": "The third cup is bereka, the blessing. Here is your cup.",
       "tts_model": "gemini-3.8-flash-lite-tts",

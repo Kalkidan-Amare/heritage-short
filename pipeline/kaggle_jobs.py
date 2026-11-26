@@ -84,6 +84,8 @@ def run_kernel(name, dataset, work):
         if "error" in status or "cancel" in status:
             out = work / "output"
             kaggle("kernels", "output", f"{user}/{slug}", "-p", out, check=False)
+            log(f"kaggle-{name}", slug, "kaggle-t4", {"dataset": dataset}, time.time() - t, status="error",
+                error=status.strip()[-300:])
             raise RuntimeError(f"{slug} failed; its log is in {out}")
         if time.time() - t > TIMEOUT_S:
             raise RuntimeError(f"{slug} still running after {TIMEOUT_S / 3600:.0f} h")

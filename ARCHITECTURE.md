@@ -27,8 +27,9 @@ Kaggle (async):  kaggle_jobs.py wan   -> outputs/wan/<shot>-<key>.mp4  (read by 
 ## Contracts
 
 - The schema (`schema/storyboard.schema.json`) is checked before every run. Unknown fields fail. Every shot needs a `reason`, a `seed` and an English subtitle. A `video` shot needs a `motion_prompt`. Shot ids are unique.
-- Keyframes are square with the subject centred, so one image serves both crops. 16:9 is the middle 1280x720 of the 1280 frame, 9:16 the middle 720x1280.
-- The character description is appended to every prompt of a shot with `shows_character`. With a FLUX.2 model the reference sheet is also sent as an input image.
+- Keyframes are square, so one image serves both crops. 16:9 is the middle 1280x720 of the 1280 frame. 9:16 is a 720x1280 slice whose position is the shot's `focus_x` (0 left, 0.5 centre, 1 right), so an off-centre subject stays in frame (E8).
+- The character description is appended to every prompt of a shot with `shows_character`. The reference sheet is sent as an input image only when `character.use_reference` is true; it is false since E3.
+- A shot may set `tts_model` to voice its line with a different TTS model than `models.tts` (used when the main model ran out of daily quota, F5).
 - Kaggle outputs are matched by key, not by name. `shots.wan_key` and `music.ace_key` compute the same key the Kaggle job used. A stale clip is ignored.
 
 ## Caching
@@ -46,7 +47,8 @@ Kaggle (async):  kaggle_jobs.py wan   -> outputs/wan/<shot>-<key>.mp4  (read by 
 
 ## Failure handling
 
-- Rate limits, timeouts and 5xx raise `Retryable`. `common.retry` tries 3 times with 4 s, 8 s backoff. Other errors stop the run with the provider's message.
+- Rate limits, timeouts and 5xx raise `Retryable`. `common.retry` backs off exponentially (3 tries from 4 s by default; Gemini calls 6 tries from 15 s, because the free tier returns 503 for minutes at a time). Other errors stop the run with the provider's message.
+- A Kaggle kernel that fails logs an error row and saves its log to `outputs/kaggle/<job>/output/`.
 - A failed call writes nothing to the cache, so the next run retries only that item.
 - Missing Wan clip: the shot falls back to Ken Burns and the run prints a note. Missing music candidate: the placeholder bed.
 - Narration longer than its shot: the shot is held longer instead of cutting the voice.
@@ -54,11 +56,11 @@ Kaggle (async):  kaggle_jobs.py wan   -> outputs/wan/<shot>-<key>.mp4  (read by 
 
 ## Logging
 
-One JSON line per model call and per cache hit in `runs.jsonl`: time, stage, item, model, seed, params, latency, cost, status, `cache_hit`. COSTS.md is built from it.
+One JSON line per model call and per cache hit in `runs.jsonl`: time, stage, item, model, seed, params, latency, cost, status, `cache_hit`. TTS rows also carry `audio_s`, which is what TTS is billed on. `make cost` (`pipeline/costs.py`) turns it into the table in COSTS.md.
 
 ## Audio
 
-Narration at 48 kHz, music pre-normalised to -24 LUFS and 6 dB down, sidechain-ducked under the voice, faded out at the end. The mix is then normalised in two passes to -14 LUFS integrated, -1 dBTP.
+Narration at 48 kHz, music pre-normalised to -24 LUFS and 6 dB down, sidechain-ducked under the voice (ratio 6, release 600 ms, from E7), faded out at the end. The mix is then normalised in two passes to -14 LUFS integrated, -1 dBTP.
 
 ## Secrets
 

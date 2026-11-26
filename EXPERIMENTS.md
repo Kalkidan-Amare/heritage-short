@@ -37,3 +37,59 @@ One entry per experiment: hypothesis, change, result, evidence (runs.jsonl rows,
 - Evidence: `outputs/experiments/e3/with-vs-without-ref.png`; `experiment-e3` rows in `runs.jsonl`.
 - Decision: `character.use_reference: false`. This is the case where the suggested practice lost to my instinct,
   at least for klein 4B with a single portrait as the reference.
+
+## E4: lite vs full Gemini TTS for Amharic (2026-11-26)
+- Hypothesis: `gemini-3.8-flash-lite-tts` sounds close enough to the full model to mix lines from both in one film.
+- Change: the 5 re-written lines on lite, the other 5 kept from the full model, same voice (Gacrux) and style.
+- Result: lite median latency 4.0 s (5 calls, no retries) vs full 5.7 s median and one call at 475 s after 503
+  retries. Lite speaks faster: 4.3 Amharic syllables per second on average vs 3.8 for the full model (10 takes).
+  By ear the timbre is slightly different but close; the user accepted it.
+- Evidence: `runs.jsonl` narration rows by model; `probe-tts` row; durations from `common.media_duration`.
+- Decision: keep the mix for this cut. If a full re-voice is needed, do all 10 lines on one model.
+
+## E5: shorter lines vs a faster voice to fit 90 s (2026-11-26)
+- Hypothesis: cutting words from the five longest lines saves more time than it costs in meaning.
+- Change: s02, s05, s06, s08, s09 re-written (178 to 125 syllables, -30%). Kept every named object and all three
+  round names (abol, tona, bereka); dropped "no one leaves before it" and the tray in s06.
+- Result: those five lines went from 47.8 s to 29.3 s of speech. Film 87.6 s to 74.5 s, plus a 4 s card: 78.5 s.
+- Evidence: `outputs/film/radio-cut-3b6fc104463c` (92.6 s) vs `radio-cut-eafa3c0ddf7c` (78.5 s); assemble rows.
+- Decision: keep. The lost line about bereka is the one thing worth asking about in user test 2.
+
+## E6: does the cache really skip unchanged work (2026-11-26)
+- Hypothesis: a re-run with nothing changed calls no model and takes seconds; a code change to subtitles rebuilds
+  only the exports.
+- Change: `make film` right after the subtitle fix (F7), then again with no change.
+- Result: first run 164 s, 35 rows, only the 16:9 and 9:16 exports uncached (the SRT text changed). Second run
+  1.9 s, 0 uncached rows.
+- Evidence: `runs.jsonl` rows at 16:07-16:10 with `cache_hit`.
+- Decision: the cache keys are right; nothing to change.
+
+## E7: how deep and how fast the music ducks (2026-11-26)
+- Hypothesis: ratio 6 with a 1.5 s release ducks well under speech and recovers between lines.
+- Change: rendered the voice and the ducked music bed separately for 6 settings; RMS in 0.4 s windows, speech
+  windows = voice above -40 dBFS (152 speech, 44 gap windows).
+
+  | Setting | Music under speech | Music in gaps | Voice over music |
+  |---|---|---|---|
+  | no ducking | -32.4 dB | -32.0 dB | 14.1 dB |
+  | ratio 3, release 1500 | -45.4 | -38.5 | 26.8 |
+  | ratio 6, release 1500 (old) | -48.6 | -40.0 | 29.9 |
+  | ratio 12, release 1500 | -50.3 | -40.4 | 31.4 |
+  | ratio 6, release 600 | -45.3 | -33.4 | 27.3 |
+  | ratio 6, release 300 | -42.8 | -32.1 | 24.3 |
+- Result: the hypothesis was half wrong. Ducking works, but with a 1.5 s release the music never comes back in the
+  short gaps (8 dB below its natural level), so the score sounded flat. 600 ms recovers to within 1.4 dB and still
+  keeps the voice 27 dB on top. 300 ms lets the music creep up under speech.
+- Evidence: `experiment-e7` rows in `runs.jsonl`.
+- Decision: `release=600` in `assemble.DUCK`. Re-check with the real ACE-Step track, which is less steady.
+
+## E8: centre crop vs a per-shot focus point for 9:16 (2026-11-26)
+- Hypothesis: square keyframes with a centred subject survive a centre crop to 9:16 (56% of the width).
+- Change: a contact sheet of every shot in the 9:16 export, then an optional `focus_x` per shot (0 left to 1 right)
+  that moves the vertical slice; set on s01 (0.2), s08 (0.7), s09 (0.85).
+- Result: the centre crop failed on 3 of 10 shots. In s09, "Here is your cup", the grandchild was cut to an edge of
+  a face, so the key moment lost the person receiving the cup. In s01 the open door (the invitation) was out of
+  frame. With focus points both are back; s09 now trades the grandmother's face for the child and the cup.
+- Evidence: contact sheets of `9x16-4a019839064e.mp4` (before) and `9x16-2da98b4a0c9c.mp4` (after); FLUX does not
+  centre two-person shots, so "centred subject" in ARCHITECTURE.md was an assumption, now removed.
+- Decision: keep `focus_x`. It touches only the 9:16 export key, so 16:9 stays cached.

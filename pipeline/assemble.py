@@ -10,7 +10,7 @@ from common import BASE, FPS, OUT, cached, key, log, run_ffmpeg
 
 STAGE = "assemble"
 CUTS = {"16x9": (1280, 720), "9x16": (720, 1280)}
-DUCK = "sidechaincompress=threshold=0.02:ratio=6:attack=300:release=1500"
+DUCK = "sidechaincompress=threshold=0.02:ratio=6:attack=300:release=600"  # E7: 1500 ms kept the music down between lines
 MUSIC_GAIN_DB = -6  # music bed level before ducking, relative to its own -24 LUFS pre-normalisation
 
 
@@ -118,7 +118,10 @@ def export(board, shots, audio, srt, total, radio=False):
         inputs = [shots[s["id"]] for s in board["shots"]] if not radio else []
         margin = 60 if h > w else 30  # keep vertical subtitles above the platform buttons
         style = f"FontName=DejaVu Sans,FontSize={8 if h > w else 14},Outline=2,MarginV={margin}"
-        k = key("export", label, inputs, audio, srt, board["end_card"], board["title"], style, (w, h))
+        # E8: a per-shot focus point keeps the subject in the narrow 9:16 crop; 16:9 crops are centred.
+        focus = [s.get("focus_x", 0.5) if h > w else 0.5 for s in board["shots"]]
+        k = key("export", label, inputs, audio, srt, board["end_card"], board["title"], style, (w, h),
+                focus if focus != [0.5] * len(focus) else None)
         path = cached("film", label, k, "mp4")
         if path.exists():
             log(STAGE, label, "ffmpeg", {}, 0, cache_hit=True)
@@ -139,8 +142,9 @@ def export(board, shots, audio, srt, total, radio=False):
             for p in inputs:
                 args += ["-i", p]
             n = len(inputs)
-            crop = f"crop={w}:{h}:{(BASE - w) // 2}:{(BASE - h) // 2}" if w != h else ""
-            vchain = "".join(f"[{i}:v]" for i in range(n)) + f"concat=n={n}:v=1:a=0,{crop},{sub},format=yuv420p[film]"
+            crops = "".join(f"[{i}:v]crop={w}:{h}:{round((BASE - w) * f)}:{(BASE - h) // 2}[c{i}];"
+                            for i, f in enumerate(focus))
+            vchain = crops + "".join(f"[c{i}]" for i in range(n)) + f"concat=n={n}:v=1:a=0,{sub},format=yuv420p[film]"
         args += ["-loop", "1", "-t", board["end_card"]["duration"], "-r", FPS, "-i", card, "-i", audio]
         graph = (f"{vchain};[{n}:v]format=yuv420p,fade=t=in:d=0.5[card];[film][card]concat=n=2:v=1:a=0[v]")
         run_ffmpeg([*args, "-filter_complex", graph, "-map", "[v]", "-map", f"{n + 1}:a", "-c:v", "libx264",
