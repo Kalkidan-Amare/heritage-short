@@ -1,13 +1,54 @@
-s01        gemini-3.5-flash-lite    gemini-3.8-flash-tts         CER 20.0%  ኔልጂ ሰሩ ታጎዝጉዟል እጣኑም ይጨሳል ቀረብ በይ
-s01        gemini-3.1-flash-lite    gemini-3.8-flash-tts         CER 36.0%  ኔሌጂ። ሳሩ ተቆዝቆዝዋል፡፡ እጣኑም ይጨሳል፡፡ ቀረብ በል።
-s01        gemini-3.6-flash         gemini-3.8-flash-tts         CER 28.0%  ነይልኝ ሳሩም ተጎስጉሷል ዕጣኑም ይጨሳል ቅርብ በል
-s02        gemini-3.5-flash-lite    gemini-3.8-flash-lite-tts    CER 23.1%  ይሁንና በመጣዱ ላይ ይቆላል እስኪ ጣቁር እንጠብቃለን።
-s02        gemini-3.1-flash-lite    gemini-3.8-flash-lite-tts    CER 11.5%  ፑን ናው በ መጣዱ ላይ ይቆላል። እስኪ ጠቁር እንጠብቃለን።
-s02        gemini-3.6-flash         gemini-3.8-flash-lite-tts    CER 11.5%  ቡናው በጣዱ ላይ ይፈላል። እስኪ ጥቁር እንጠብቃለን።
-s03        gemini-3.5-flash-lite    gemini-3.8-flash-tts         CER 36.7%  እጅ እሱን በጀህ እጅ ወደ ረሳችሁ ሰዓት የቤታችን መአዛ ይኸው ነው
-s03        gemini-3.1-flash-lite    gemini-3.8-flash-tts         CER 30.0%  እዩ ስንበት እጀቹ ወደ ራሳችሁ ሰሁት የቤታችን መዓዛ ይኸው ነው።
-s03        gemini-3.6-flash         gemini-3.8-flash-tts         CER 16.7%  እሱን በእጃችሁ ወደራሳችሁ ሳባችሁ የቤታችን መአዛ ይኸው ነው።
-s04        gemini-3.5-flash-lite    gemini-3.8-flash-tts         CER 14.8%  በሙቅ ጭና፣ በዘነዘና፣ ፍሪውን በጃችን እንወቅጠዋለን።
-s04        gemini-3.1-flash-lite    gemini-3.8-flash-tts         CER 11.1%  በመቅቻና በዘነዘና ፍሪውን በእጃችን እንወቅጠዋለን።
-s04        gemini-3.6-flash         gemini-3.8-flash-tts         CER  7.4%  በሙከቻና በዘነዘና ፍሬውን በእጃችን እንወቅጣለን።
-s05        gemini-3.5-flash-lite    gemini-3.8-flash-lite-tts    CER 10.3%  ጀበናው በከሰሉይ ረጋ ብሎ ይፈላል ፈንዲሻው ሚቀርባል
+s01        gemini-3.5-flash-lite    gemini-3.8-flash-tts         CER 24.0%  ኔልጂ ሳሩ ታጎዝጉዟል፤ እጣኑም ይጨሳል፤ ቀረብ ይበል፡፡
+s01        gemini-3.1-flash-lite    gemini-3.8-flash-tts         CER 16.0%  ኔልጄ ሳሩ ተጉዝጉዟል እጣኑም ይጨሳል ቀረብ በል
+s01        gemini-3.6-flash         gemini-3.8-flash-tts         CER 28.0%  ነልጄ
+ሳሩ ተጎስጉሷል
+እጣኑም ጢሷል
+ቀርብ በይ
+s02        gemini-3.5-flash-lite    gemini-3.8-flash-lite-tts    CER  7.7%  ፑናው በምጣዱ ላይ ይቆላል። እስኪ ጣቁር እንጠብቃለን።
+s02        gemini-3.1-flash-lite    gemini-3.8-flash-lite-tts    CER 11.5%  ፖንናው በመጣዱ ላይ ይቆላል እስኪ ጠቁር እንጠብቃለን።
+s02        gemini-3.6-flash         gemini-3.8-flash-lite-tts    CER  7.7%  ቡናው በመጣድ ላይ ይቆላል። እስኪጠቁር እንጠብቃለን።
+s03        gemini-3.5-flash-lite    gemini-3.8-flash-tts         CER 30.0%  ሁሉ እሱን በጀሀችሁ ወደሳላችሁ ሳሁት የቤታችን መአዛ ይኸው ነው።
+s03        gemini-3.1-flash-lite    gemini-3.8-flash-tts         CER 36.7%  እዩ ስንበጃቹ ወደራሳቹ ሰብኡት የቤታችን መዓዛ ይሄው ነው።
+s03        gemini-3.6-flash         gemini-3.8-flash-tts         CER 20.0%  እሱን በጃችሁ ወደራሳችሁ ሳቡት። የቤታችን ማዕዘን ይኸው ነው።
+s04        gemini-3.5-flash-lite    gemini-3.8-flash-tts         CER 33.3%  ቤሙክጫና በዘነዘና ፍሪሁን ቤጃችን እንወጣዋለን።
+s04        gemini-3.1-flash-lite    gemini-3.8-flash-tts         CER 18.5%  በሙቅ ቻና በዜና ዜና ፍሪውን በእጃችን እንወቅጠዋለን።
+  retry 1/2 in 10s: 503 This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.
+  retry 2/2 in 20s: 503 This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.
+s04        gemini-3.6-flash         ERROR 503 This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.
+s05        gemini-3.5-flash-lite    gemini-3.8-flash-lite-tts    CER 10.3%  ጀበናው በከሰሉይ ረጋብሎ ይፈላል። ፈንዲሻው ሚቀርባል?
+s05        gemini-3.1-flash-lite    gemini-3.8-flash-lite-tts    CER  0.0%  ጀበናው በከሰሉ ላይ ረጋ ብሎ ይፈላል። ፈንዲሻውም ይቀርባል።
+  retry 1/2 in 10s: 503 This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.
+  retry 2/2 in 20s: 503 This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.
+s05        gemini-3.6-flash         ERROR 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, h
+s06        gemini-3.5-flash-lite    gemini-3.8-flash-lite-tts    CER  4.2%  የመጀመሪያው ሲኒ አቦል ነው፣ ጤንካራና የሚያነቃ።
+s06        gemini-3.1-flash-lite    gemini-3.8-flash-lite-tts    CER 12.5%  የመጀመሪያ መሪያው ሲኒ አቦል ነው፣ ጠንካራና የሚያነቃ።
+  retry 1/2 in 10s: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash, description: Generate content requests per day limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.
+Please retry in 15h31m4.511482289s.
+  retry 2/2 in 20s: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash, description: Generate content requests per day limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.
+Please retry in 15h30m52.696908583s.
+s06        gemini-3.6-flash         ERROR 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, h
+  retry 1/2 in 10s: 503 This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.
+s07        gemini-3.5-flash-lite    gemini-3.8-flash-tts         CER 20.7%  ቦንና ማለጥ ማጣት ብቻ አይደለም ለሰዎች የምንሰጠው ጊዜ ነው።
+s07        gemini-3.1-flash-lite    gemini-3.8-flash-tts         CER 27.6%  በዋናነት መታተብን ብቻ አይደለም ለሰዎች የምንሰጠው ጊዜ ነው።
+  retry 1/2 in 10s: 503 This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.
+  retry 2/2 in 20s: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash, description: Generate content requests per day limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.
+Please retry in 15h29m39.132580625s.
+s07        gemini-3.6-flash         ERROR 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, h
+s08        gemini-3.5-flash-lite    gemini-3.8-flash-lite-tts    CER 26.9%  ሁለተኛው ቶናኖ በሩቅ ፍጥነዉ መንገደኛ የሚገባል
+s08        gemini-3.1-flash-lite    gemini-3.8-flash-lite-tts    CER 26.9%  ሁሌ ተኛው ቶ ነው በሩቅ ፈት ነው መገደኛ የሚገባል
+  retry 1/2 in 10s: 503 This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.
+  retry 2/2 in 20s: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash, description: Generate content requests per day limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.
+Please retry in 15h28m20.897843105s.
+s08        gemini-3.6-flash         ERROR 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, h
+s09        gemini-3.5-flash-lite    gemini-3.8-flash-lite-tts    CER 35.0%  ሶስት ኛውን በረቃ ነው በረካቱ ይሄው ሲኒሽ
+s09        gemini-3.1-flash-lite    gemini-3.8-flash-lite-tts    CER 20.0%  ሶስተኛው በርቃ ነው በርቃቱ። ይሄው ሲኒሽ።
+  retry 1/2 in 10s: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash, description: Generate content requests per day limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.
+Please retry in 15h27m50.373068094s.
+  retry 2/2 in 20s: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash, description: Generate content requests per day limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.
+Please retry in 15h27m38.869056547s.

@@ -94,6 +94,39 @@ One entry per experiment: hypothesis, change, result, evidence (runs.jsonl rows,
   centre two-person shots, so "centred subject" in ARCHITECTURE.md was an assumption, now removed.
 - Decision: keep `focus_x`. It touches only the 9:16 export key, so 16:9 stays cached.
 
+## E9: can a machine listener follow the Amharic voice (2026-11-26)
+- Hypothesis: Gemini TTS Amharic is clear enough that a speech model transcribes most lines within 15% character
+  error rate (CER), so the voice is not the weak point.
+- Change: each of the 10 film takes went to 3 Gemini listeners (3.5-flash-lite, 3.1-flash-lite, 3.6-flash),
+  CER after merging Ge'ez letters that sound the same (`experiments/e9_roundtrip.py amharic`). A line counts as
+  unclear only when every listener misses it. 3.6-flash failed from s04 on (503 overload, then its 20-a-day free quota, 429), so
+  s04-s09 have 2 listeners and s10 has 1.
+
+  | Shot | TTS | Best CER | Worst CER | Unclear? |
+  |---|---|---|---|---|
+  | s01 | full | 16% | 28% | yes |
+  | s02 | lite | 8% | 12% | no |
+  | s03 | full | 20% | 37% | yes |
+  | s04 | full | 19% | 33% | yes |
+  | s05 | lite | 0% | 10% | no |
+  | s06 | lite | 4% | 13% | no |
+  | s07 | full | 21% | 28% | yes |
+  | s08 | lite | 27% | 27% | yes |
+  | s09 | lite | 20% | 35% | yes |
+  | s10 | full | 48% (1 listener) | 48% | yes |
+- Result: the hypothesis was wrong. 7 of 10 lines are unclear to every listener. The errors gather on the
+  words that matter most, the round names: "ቶና" came back as "ቶናኖ" and "ቶ ነው" (s08), "በረካ" as "በረቃ" and
+  "በርቃ" (s09). An earlier probe heard s01's feminine "ቀረብ በይ" as masculine "በል". Listeners also disagree a lot
+  on the same take (s03: 20% to 37%), so one listener is not a measure.
+- The 3 clear lines are all short lite-TTS lines from E5, but so are s08 and s09, so length or model alone does
+  not explain it.
+- Limitation: the listener is a model from the same family, not a person. This flags lines to check; the user
+  tests judge how it sounds.
+- Evidence: `experiment-e9` rows in `runs.jsonl` from 19:20 on; `outputs/experiments/e9-amharic.log`.
+- Decision: keep the burned-in English subtitles, which spell abol, tona and bereka in Latin letters
+  (`storyboard.json` s06, s08, s09 `subtitle_en`), so a viewer who mishears a name still reads it. The round
+  names are the first thing to ask the testers about.
+
 ## E10: which ACE-Step candidate follows the music cues (2026-11-26)
 - Hypothesis: with one caption and three seeds, the candidates differ mostly in melody, not in shape, so any of
   them fits the cue arc (quiet drone, livelier from 27 s, flute from 49 s, tender from 62 s).
