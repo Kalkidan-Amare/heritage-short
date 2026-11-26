@@ -11,6 +11,7 @@ from PIL import Image
 WORK = Path("/kaggle/working")
 REPO = Path("/kaggle/tmp/Wan2.2")
 CKPT = Path("/kaggle/tmp/Wan2.2-TI2V-5B")
+VENV = Path("/kaggle/tmp/wan-venv")
 BUDGET_S = 8 * 3600  # start no new shot after 8 h; Kaggle stops the session at 9 h
 
 
@@ -22,8 +23,12 @@ def sh(cmd, **kw):
 def setup():
     REPO.parent.mkdir(parents=True, exist_ok=True)
     sh(f"git clone --depth 1 https://github.com/Wan-Video/Wan2.2.git {REPO}")
-    # flash_attn does not build for a T4; the attention code falls back to PyTorch SDPA without it.
-    sh(f"grep -v flash_attn {REPO}/requirements.txt > /kaggle/tmp/req.txt && pip install -q -r /kaggle/tmp/req.txt")
+    # Wan pins numpy<2, which breaks transformers on Kaggle's Python 3.13 (FAILURES.md F9), so it gets its own
+    # Python 3.12 env. flash_attn does not build for a T4; the attention code falls back to PyTorch SDPA.
+    sh("pip install -q uv")
+    sh(f"uv venv -p 3.12 {VENV}")
+    sh(f"grep -v flash_attn {REPO}/requirements.txt > /kaggle/tmp/req.txt && "
+       f"uv pip install -p {VENV}/bin/python --torch-backend cu126 -r /kaggle/tmp/req.txt")
     from huggingface_hub import snapshot_download
     snapshot_download("Wan-AI/Wan2.2-TI2V-5B", local_dir=str(CKPT))
     return subprocess.run(["git", "-C", str(REPO), "rev-parse", "--short", "HEAD"], capture_output=True,
@@ -62,7 +67,7 @@ def main():
         img = Path("/kaggle/tmp") / f"{j['id']}-in.png"
         landscape(data / j["image"], img, w, h)
         t = time.time()
-        cmd = ["python", "generate.py", "--task", "ti2v-5B", "--size", s["size"], "--ckpt_dir", str(CKPT),
+        cmd = [str(VENV / "bin" / "python"), "generate.py", "--task", "ti2v-5B", "--size", s["size"], "--ckpt_dir", str(CKPT),
                "--offload_model", "True", "--convert_model_dtype", "--t5_cpu", "--image", str(img),
                "--prompt", j["prompt"], "--frame_num", str(s["frames"]), "--sample_steps", str(s["steps"]),
                "--base_seed", str(j["seed"]), "--save_file", str(WORK / j["file"])]

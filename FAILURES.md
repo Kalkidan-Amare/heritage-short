@@ -35,10 +35,23 @@ What broke, what I tried, what fixed it.
   github.com`. `enable_internet: true` is set in the kernel metadata, but Kaggle grants internet only to
   phone-verified accounts.
 - Tried: read both kernel logs (`outputs/kaggle/*/output/*.log`) to confirm it was DNS, not code.
-- Status: waiting on phone verification. Until then video shots fall back to Ken Burns (`shots.py`) and music to the
-  placeholder bed, so `make film` still finishes.
+- Fixed: the user phone-verified the account. Until then video shots fell back to Ken Burns (`shots.py`) and music
+  to the placeholder bed, so `make film` still finished.
 
 ## F7: one stray word left alone on screen (2026-11-26)
 - Broke: the s01 subtitle split into "...the frankincense is burning. Come" and then "closer." for 0.5 s, because
   cues were cut every two wrapped lines regardless of sentences.
 - Fixed: `assemble.subtitles` now breaks at sentence ends first and only wraps within a sentence.
+
+## F8: ACE-Step would not install on Kaggle's Python (2026-11-26)
+- Broke: `pip install -e ACE-Step-1.5` exited 1. Its `pyproject.toml` says `requires-python = ">=3.11,<3.13"` and
+  the Kaggle image runs Python 3.13 (`outputs/kaggle/ace/output/heritage-ace.log`).
+- Fixed: the kernel now does what the ACE-Step README does: `uv sync --python 3.12` builds the repo's locked env,
+  then the kernel re-runs itself inside it (`kaggle/ace_kernel.py` `setup`).
+
+## F9: Wan 2.2 crashed on import on Kaggle (2026-11-26)
+- Broke: all 4 shots failed in 7 to 27 s with `module 'numpy.dtypes' has no attribute 'StringDType'`. Wan's
+  `requirements.txt` pins `numpy<2`; pip put numpy 1.26.4 into Kaggle's Python 3.13, and the preinstalled
+  transformers needs numpy 2 there (`outputs/kaggle/wan/output-run1/`). 233 s of setup, 0 GPU work done.
+- Fixed: Wan runs in its own Python 3.12 env made with `uv`, torch from the CUDA 12.6 index
+  (`kaggle/wan_kernel.py` `setup`). Same idea as F8.

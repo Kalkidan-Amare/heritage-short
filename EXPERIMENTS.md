@@ -93,3 +93,21 @@ One entry per experiment: hypothesis, change, result, evidence (runs.jsonl rows,
 - Evidence: contact sheets of `9x16-4a019839064e.mp4` (before) and `9x16-2da98b4a0c9c.mp4` (after); FLUX does not
   centre two-person shots, so "centred subject" in ARCHITECTURE.md was an assumption, now removed.
 - Decision: keep `focus_x`. It touches only the 9:16 export key, so 16:9 stays cached.
+
+## E10: which ACE-Step candidate follows the music cues (2026-11-26)
+- Hypothesis: with one caption and three seeds, the candidates differ mostly in melody, not in shape, so any of
+  them fits the cue arc (quiet drone, livelier from 27 s, flute from 49 s, tender from 62 s).
+- Change: 3 candidates (seeds 40192834-36, ACE-Step 1.5 turbo, 84 s, T4). Measured with ffmpeg only
+  (`experiments/e10_music.py`): short-term loudness per cue segment, crest factor, silent gaps of 1 s or more.
+
+  | Cand. | 0-27 s | 27-49 s | 49-62 s | 62-84 s | Silent gaps (mid-film) |
+  |---|---|---|---|---|---|
+  | 0 | -25.6 LUFS | -22.3 | -23.2 | -23.2 | 27.6-30.5 s |
+  | 1 | -22.6 | -19.2 | -18.5 | -20.9 | none |
+  | 2 | -20.0 | -27.9 | -18.8 | -24.8 | none |
+- Result: the hypothesis was wrong. The shapes differ a lot. Candidate 2 drops 8 dB at 27 s, the opposite of the
+  cue. Candidate 0 goes silent for 2.9 s right where the pulse should start. Candidate 1 rises at 27 s and 49 s and
+  softens from 62 s, the closest to the arc. Generation took 13.0 s, 7.7 s, 7.7 s.
+- Evidence: `experiment-e10` and `ace` rows in `runs.jsonl`; `outputs/ace/9072530580d1-{0,1,2}.wav`.
+- Decision: `music.chosen: 1`. Loudness cannot tell a krar from a guitar, so the choice still needs a listen.
+  Lesson: generate several seeds and measure before listening; a seed changes the structure, not just the notes.

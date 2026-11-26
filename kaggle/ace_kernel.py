@@ -2,6 +2,7 @@
 Writes <key>-<i>.wav and timings.json to /kaggle/working. Candidate i uses seed + i, so each one can be re-made."""
 import glob
 import json
+import os
 import subprocess
 import sys
 import time
@@ -17,18 +18,21 @@ def sh(cmd):
 
 
 def setup():
+    """ACE-Step 1.5 needs Python >=3.11,<3.13 and Kaggle runs 3.13 (FAILURES.md F8), so build the repo's own
+    locked env with `uv sync` as its README does, then re-run this file inside it."""
     REPO.parent.mkdir(parents=True, exist_ok=True)
     sh(f"git clone --depth 1 https://github.com/ACE-Step/ACE-Step-1.5.git {REPO}")
-    # The README installs with `uv sync` into its own venv; a pip install into the kernel's Python is UNVERIFIED.
-    sh(f"pip install -q -e {REPO}")
-    sys.path.insert(0, str(REPO))
-    return subprocess.run(["git", "-C", str(REPO), "rev-parse", "--short", "HEAD"], capture_output=True,
-                          text=True).stdout.strip()
+    sh("pip install -q uv")
+    sh(f"cd {REPO} && uv sync --python 3.12")
+    commit = subprocess.run(["git", "-C", str(REPO), "rev-parse", "--short", "HEAD"], capture_output=True,
+                            text=True).stdout.strip()
+    sh(f"cd {REPO} && ACE_INNER={commit} uv run --no-sync python {Path(globals().get('__file__') or '/kaggle/src/script.py').resolve()}")
 
 
 def main():
     job = json.loads(Path(glob.glob("/kaggle/input/**/job.json", recursive=True)[0]).read_text())
-    commit = setup()
+    commit = os.environ["ACE_INNER"]
+    sys.path.insert(0, str(REPO))
     from acestep.handler import AceStepHandler
     from acestep.inference import GenerationConfig, GenerationParams, generate_music
 
@@ -61,4 +65,7 @@ def main():
         (WORK / "timings.json").write_text(json.dumps(timings, indent=1))
 
 
-main()
+if os.environ.get("ACE_INNER"):
+    main()
+else:
+    setup()
