@@ -78,7 +78,7 @@
       "reason": "Captures the physical labor and rhythmic pulse of hand-grinding the beans.",
       "shot_size": "insert",
       "shows_character": false,
-      "image_prompt": "A tall carved wooden mortar (mukecha) with crushed dark coffee grounds inside, a heavy metal pestle (zenezena) resting inside the rim, surrounded by scattered green grass on the floor in amber lamp glow.",
+      "image_prompt": "A traditional Ethiopian mukecha: a tall wooden mortar carved from a single log, shaped like a goblet with a deep bowl on top, a narrow waist and a wide flat foot, dark crushed coffee grounds in the bowl, a long thin iron rod pestle (zenezena) standing upright in it, fresh green grass strewn on the earthen floor around its foot, amber lamp glow.",
       "motion": "video",
       "motion_prompt": "The pestle rhythmically lifts and strikes downward into the mortar, crushing the dark beans into coarse powder; camera remains in steady close framing.",
       "narration": "በሙከቻና በዘነዘና ፍሬውን በእጃችን እንወቅጠዋለን።",
@@ -91,7 +91,7 @@
       "reason": "Presents the brewing clay pot alongside traditional ceremonial snacks.",
       "shot_size": "wide",
       "shows_character": false,
-      "image_prompt": "A black clay jebena coffee pot: a perfectly round belly, a long narrow neck rising straight up, a small spout and a loop handle, sitting on glowing charcoal in a clay brazier, steam rising from its neck, a woven basket of white popcorn beside it",
+      "image_prompt": "A black clay jebena coffee pot: a perfectly round belly, a long narrow neck rising straight up with a tiny opening at the top plugged with a twist of dry grass, a small short spout where the neck meets the belly, a loop handle from neck to belly, sitting on glowing charcoal in a small clay brazier, steam rising, fresh green grass strewn on the floor; far away from the fire, on the other side of the frame, a woven basket of white popcorn on the grass.",
       "motion": "kenburns",
       "kenburns": {
         "zoom": "in",
@@ -138,7 +138,7 @@
       "reason": "Illustrates the second round, where conversation deepens and neighbours participate.",
       "shot_size": "wide",
       "shows_character": true,
-      "image_prompt": "An older woman conversing tenderly with neighbours seated upon low stools in the room, holding the second round of coffee cups, an open doorway in the background showing twilight outside.",
+      "image_prompt": "An older Ethiopian Habesha woman in a white netela shawl talking warmly with two Habesha neighbours from Addis Ababa, a man in a white gabi shawl and a woman with braided hair, both with dark brown skin, seated on low wooden stools, all holding small white coffee cups, fresh green grass strewn on the earthen floor, an open doorway behind them showing twilight outside.",
       "motion": "kenburns",
       "kenburns": {
         "zoom": "in",
