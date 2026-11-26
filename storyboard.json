@@ -1,0 +1,209 @@
+{
+  "title": "Three Cups (ሶስት ሲኒ)",
+  "logline": "An Ethiopian grandmother guides her grandchild through the deliberate rhythms of the traditional coffee ceremony, revealing that the true blessing is the gift of time.",
+  "language": {
+    "code": "am",
+    "name": "Amharic"
+  },
+  "audience": "Diaspora youth, families, and cultural heritage audiences on streaming and social platforms.",
+  "intent": "To evoke the profound warmth of communal patience and show that the coffee ceremony is fundamentally about presence, hospitality, and generational connection.",
+  "style_block": "Painterly cinematic illustration, rich earthy umber and ochre tones, chiaroscuro lighting with warm amber charcoal glow, atmospheric indoor smoke haze, textured brushwork, timeless non-photorealistic aesthetic, no visible letters or text.",
+  "character": {
+    "name": "Grandmother",
+    "description": "Elderly Ethiopian Habesha grandmother with dark brown skin, kind weathered face, deep smile lines, silver-grey hair under a white netela shawl with a thin woven red-and-green tibeb border, wearing a white handwoven habesha kemis",
+    "reference_prompt": "Character sheet portrait of an elderly Ethiopian Habesha grandmother with dark brown skin, warm kind expression, gentle dark eyes with fine crow's feet, white netela shawl over her hair, plain warm brown background, soft side light",
+    "seed": 91823711,
+    "use_reference": false
+  },
+  "models": {
+    "text": "gemini-3.8-flash",
+    "image": "@cf/black-forest-labs/flux-2-klein-4b",
+    "tts": "gemini-3.8-flash-tts",
+    "tts_voice": "Gacrux",
+    "tts_style": "an elderly grandmother, warm, slow and tender, speaking to her grandchild",
+    "video": "wan2.2-ti2v-5b",
+    "music": "ace-step-1.5"
+  },
+  "shots": [
+    {
+      "id": "s01",
+      "duration": 7,
+      "reason": "Establishes the ceremonial space and inviting sensory atmosphere of the home.",
+      "shot_size": "medium",
+      "shows_character": false,
+      "image_prompt": "Freshly cut green grass carpeted over an earthen room floor, a small terracotta clay incense burner releasing fragrant white frankincense smoke, warm late-day ambient light drifting from an open wooden doorway.",
+      "motion": "kenburns",
+      "kenburns": {
+        "zoom": "in",
+        "pan": "up"
+      },
+      "narration": "ነይ ልጄ፤ ሳሩ ተጎዝጉዟል፥ እጣኑም ይጨሳል። ቀረብ በይ።",
+      "subtitle_en": "Come, my child. The grass is spread and the frankincense is burning. Come closer.",
+      "seed": 10472911
+    },
+    {
+      "id": "s02",
+      "duration": 7,
+      "reason": "Shows the initial stage of transformation as green beans begin roasting.",
+      "shot_size": "close",
+      "shows_character": false,
+      "image_prompt": "Top-down view of a round flat metal roasting pan resting over glowing orange charcoal embers, filled with coffee beans transitioning from pale green to mottled brown and dark, subtle wisps of aromatic vapor rising.",
+      "motion": "video",
+      "motion_prompt": "The coffee beans tumble and slide across the hot metal pan while glowing embers flicker beneath; camera slowly descends toward the pan.",
+      "narration": "ጥሬው ቡና በምጣዱ ላይ ሲቆላ፥ ጠቁሮ እስኪፈነዳ ድረስ እንጠብቃለን።",
+      "subtitle_en": "We roast the green beans in the pan and wait until they turn dark and crack.",
+      "seed": 24918231
+    },
+    {
+      "id": "s03",
+      "duration": 7,
+      "reason": "Highlights the communal gesture of sharing the roasted coffee aroma with the household.",
+      "shot_size": "medium",
+      "shows_character": true,
+      "image_prompt": "One elderly woman seated on a low wooden stool holding a small flat metal pan of dark smoking roasted coffee beans out toward the viewer with both hands, thick blue-grey smoke curling up from the pan, charcoal brazier glowing beside her, dim room",
+      "motion": "kenburns",
+      "kenburns": {
+        "zoom": "out",
+        "pan": "right"
+      },
+      "narration": "ጭሱን በእጃችሁ ወደ ራሳችሁ ሳቡት፤ የቤታችን መዓዛ ይኸው ነው።",
+      "subtitle_en": "Draw the smoke toward you with your hand. This is the smell of our home.",
+      "seed": 38192011
+    },
+    {
+      "id": "s04",
+      "duration": 6,
+      "reason": "Captures the physical labor and rhythmic pulse of hand-grinding the beans.",
+      "shot_size": "insert",
+      "shows_character": false,
+      "image_prompt": "A tall carved wooden mortar (mukecha) with crushed dark coffee grounds inside, a heavy metal pestle (zenezena) resting inside the rim, surrounded by scattered green grass on the floor in amber lamp glow.",
+      "motion": "video",
+      "motion_prompt": "The pestle rhythmically lifts and strikes downward into the mortar, crushing the dark beans into coarse powder; camera remains in steady close framing.",
+      "narration": "በሙከቻና በዘነዘና ፍሬውን በእጃችን እንወቅጠዋለን።",
+      "subtitle_en": "With mortar and pestle, we crush the beans by hand.",
+      "seed": 49182033
+    },
+    {
+      "id": "s05",
+      "duration": 7,
+      "reason": "Presents the brewing clay pot alongside traditional ceremonial snacks.",
+      "shot_size": "wide",
+      "shows_character": false,
+      "image_prompt": "A black clay jebena coffee pot: a perfectly round belly, a long narrow neck rising straight up, a small spout and a loop handle, sitting on glowing charcoal in a clay brazier, steam rising from its neck, a woven basket of white popcorn beside it",
+      "motion": "kenburns",
+      "kenburns": {
+        "zoom": "in",
+        "pan": "none"
+      },
+      "narration": "በጀበናው ውስጥ ውኃውና ዱቄቱ በከሰሉ ረጋ ብለው ይፈላሉ። ፈንዲሻውም ይቀርባል።",
+      "subtitle_en": "In the clay pot, coffee and water boil gently on the coals while popcorn is served.",
+      "seed": 58291044
+    },
+    {
+      "id": "s06",
+      "duration": 8,
+      "reason": "Depicts the iconic high pour of the first round onto the decorated wooden tray.",
+      "shot_size": "medium-close",
+      "shows_character": false,
+      "image_prompt": "Seven tiny round white porcelain cup shaped like a small bowl, the size of an egg cup, with no handles arranged in rows on a small low carved wooden tray, dark coffee being poured into them in a thin stream from the long neck of a black clay pot, steam rising, close view",
+      "motion": "video",
+      "motion_prompt": "Dark hot liquid flows in an unbroken stream from high above into the small cups, filling each consecutively; camera slowly tracks horizontally across the tray.",
+      "narration": "ሲኒዎቹ በረከቦቱ ላይ ቆመዋል፤ የመጀመሪያው ጽዋ አቦል ይባላል፥ ጠንካራና ንቁ።",
+      "subtitle_en": "The cups rest on the wooden tray; the first round is abol, bold and wakeful.",
+      "seed": 67182901
+    },
+    {
+      "id": "s07",
+      "duration": 7,
+      "reason": "Emphasizes the core philosophical message that the ceremony exists for human presence.",
+      "shot_size": "medium",
+      "shows_character": true,
+      "image_prompt": "An elderly woman seated in a dim room, holding one tiny round white porcelain cup shaped like a small bowl, the size of an egg cup, with no handle of black coffee in both palms close to her chest, smiling softly toward someone beside her, evening light through a doorway behind her",
+      "motion": "kenburns",
+      "kenburns": {
+        "zoom": "out",
+        "pan": "none"
+      },
+      "narration": "ቡና ማለት መጠጥ ብቻ አይደለም፤ ለሰዎች የምንሰጠው ጊዜ ነው።",
+      "subtitle_en": "Coffee is not merely a drink; it is the gift of time given to one another.",
+      "seed": 78291022
+    },
+    {
+      "id": "s08",
+      "duration": 7,
+      "reason": "Illustrates the second round, where conversation deepens and neighbours participate.",
+      "shot_size": "wide",
+      "shows_character": true,
+      "image_prompt": "An older woman conversing tenderly with neighbours seated upon low stools in the room, holding the second round of coffee cups, an open doorway in the background showing twilight outside.",
+      "motion": "kenburns",
+      "kenburns": {
+        "zoom": "in",
+        "pan": "left"
+      },
+      "narration": "ሁለተኛው ቶና ነው፤ ደጃፉ ክፍት ነው፥ መንገደኛውም ገብቶ ችግሩን ያወራል።",
+      "subtitle_en": "The second cup is tona; the doorway remains open for any passerby to share their burdens.",
+      "seed": 89201944
+    },
+    {
+      "id": "s09",
+      "duration": 8,
+      "reason": "Shows the critical third round and transmission of the blessing to the younger generation.",
+      "shot_size": "close",
+      "shows_character": true,
+      "image_prompt": "Close view of an elderly woman's hands passing one tiny round white porcelain cup shaped like a small bowl, the size of an egg cup, with no handle full of black coffee into the open hands of a young Ethiopian girl with dark brown skin and braided hair, both pairs of hands in warm charcoal light, the old woman's smiling face above, soft focus",
+      "motion": "video",
+      "motion_prompt": "Grandmother's hands gently pass the hot ceramic cup into the smaller hands of the youth, rising steam curling softly upward; camera stays centered on the exchange.",
+      "narration": "ሦስተኛው በረካ ነው፥ ምርቃቱ። ያለ እርሱ መሄድ አይቻልም። ይኸው ጽዋሽ።",
+      "subtitle_en": "The third cup is bereka, the blessing. No one departs before it. Here is your cup.",
+      "seed": 91823488
+    },
+    {
+      "id": "s10",
+      "duration": 6,
+      "reason": "Ends on the quiet promise that the grandchild will carry this tradition forward.",
+      "shot_size": "close",
+      "shows_character": false,
+      "image_prompt": "Close view of a young woman's hands holding one tiny round white porcelain cup shaped like a small bowl, the size of an egg cup, with no handle of black coffee, steam rising, fresh green grass spread on an earthen floor below, glowing charcoal brazier in soft focus behind",
+      "motion": "kenburns",
+      "kenburns": {
+        "zoom": "in",
+        "pan": "none"
+      },
+      "narration": "አንድ ቀን አንቺም ለቤተሰብሽ ይህንን በረከት ታፈዪዋለሽ።",
+      "subtitle_en": "One day, you too will roast and brew this blessing for your own family.",
+      "seed": 10293847
+    }
+  ],
+  "music": {
+    "caption": "Acoustic traditional Ethiopian meditative theme featuring delicate krar lyre arpeggios, gentle breathy washint flute, soft clay pot percussion, and warm ambient drone creating a deeply reflective, nostalgic mood.",
+    "bpm": 64,
+    "key": "A minor (anchihoye pentatonic mode)",
+    "duration": 75,
+    "instrumental": true,
+    "candidates": 3,
+    "chosen": 0,
+    "seed": 40192834,
+    "cues": [
+      {
+        "at": 0,
+        "note": "Subtle low drone and solitary krar pluck as incense smoke appears"
+      },
+      {
+        "at": 27,
+        "note": "Rhythmic pulse enlivens as the mortar strikes and the jebena begins boiling"
+      },
+      {
+        "at": 49,
+        "note": "Gentle washint flute melody enters as conversation and communal cups are served"
+      },
+      {
+        "at": 62,
+        "note": "Tender emotional resolution as the third cup is handed over and the blessing is spoken"
+      }
+    ]
+  },
+  "end_card": {
+    "text": "Three Cups. Made with AI: script and voice by Gemini, images by FLUX.2, motion by Wan 2.2, music by ACE-Step.",
+    "duration": 5
+  }
+}

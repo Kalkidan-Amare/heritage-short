@@ -5,3 +5,4 @@ __pycache__/
 # test-fixture runs; decide what real outputs to commit before the first push
 outputs/
 runs.jsonl
+storyboard.draft.json

@@ -97,7 +97,8 @@ def generate(item, prompt, seed, board, reference=None):
 def run(board):
     c = board["character"]
     ref = generate("reference", f"{c['reference_prompt']}. {c['description']}. {board['style_block']}.", c["seed"], board)
-    uses_ref = "flux-2" in board["models"]["image"]
+    # E3 (EXPERIMENTS.md): with the reference attached, FLUX.2 klein copied the portrait and dropped the action.
+    uses_ref = "flux-2" in board["models"]["image"] and c.get("use_reference", True)
     out = {"reference": ref}
     for shot in board["shots"]:
         reference = ref if uses_ref and shot.get("shows_character") else None
