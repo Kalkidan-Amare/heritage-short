@@ -16,7 +16,8 @@ Repository: https://github.com/Kalkidan-Amare/heritage-short. Every claim below 
   listeners before the video was done. I report that rather than make it up. The machine-listener check (E9)
   stood in for it, and it flagged the same words people flagged later (`DESIGN.md`, User test 1).
 
-- Test 2: three people from the audience watched the 9:16 near-final cut. Their words are quoted in `DESIGN.md`.
+- Test 2: three people from the audience watched the 9:16 near-final cut: a friend by Telegram, a friend in
+  person, and a diaspora viewer in London by phone call. Their words are quoted in `DESIGN.md`.
 - The story worked. All three said it was about coffee time in Ethiopia, all three named abol, tona and bereka,
   and none lost interest. That was the goal I wrote before generating anything.
 - The voice did not fully work. One heard "roast" and "smoke" wrong, one heard "bereka" said wrong (the voice

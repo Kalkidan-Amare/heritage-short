@@ -22,14 +22,14 @@ Narration over placeholder music on black (`make radio`, `~/Videos/three-cups-ra
   speech models). It flagged the round names before any person heard them, and test 2 confirmed it.
 
 ## User test 2: near-final cut
-Film v3, 9:16 (`make film`, commit 6bd5d01), shown on 26 Nov evening. Roles and channel: not given yet.
+Film v3, 9:16 (`make film`, commit 6bd5d01), shown on 26 Nov evening to two friends and one diaspora viewer in London.
 Notes as given are kept word for word outside the repo; quotes below are exact.
 
 | Person | What they said (quote) | What I changed |
 |---|---|---|
-| P1, role not given, written answers | Story: "traditional coffee time in ethiopia". Rounds: "Abol, tona, bereka". "the words 'roast' and 'smoke' sounded wrong". "I didn't loose interes". "The mortar and pestle picture doesn't look ethiopian". "The popcorn is too close to the fire where the jabena is on, in real life it would catch fire" | s04 prompt now describes a mukecha by shape (one log, goblet, narrow waist) and an iron rod zenezena. s05 puts the popcorn basket far from the brazier. Voice: not changed (see below) |
-| P2, role not given, voice note | Story: "coffee in Ethiopia". Rounds: "abole, tona, bereka". The video "was saying bereka instead of bereka" (the transcript lost the difference; the voice says በረቃ, not በረካ). "the opening was a bit wide for jabana that I used to know". "I actually didn't lose interest" | s05 jebena: long narrow neck with a tiny opening plugged with grass, short spout at the base of the neck |
-| P3, role not given (P2 called them "a desperate", likely diaspora), reported by P2 | "the sound was a bit uh lagged". "it would have been good if we could see a star the grass around the ceremony" (grass strewn on the floor). "he didn't lose uh uh an interest". "the woman actually look like uh Ethiopian but the the men are a bit they seem a bit Asian I don't know Indian". "The actual the color tone is great" | s04, s05, s08 now show fresh grass on the floor. s08 neighbours are described as Habesha, a man in a gabi and a woman with braids |
+| P1, friend, Telegram, written answers to the 6 questions | Story: "traditional coffee time in ethiopia". Rounds: "Abol, tona, bereka". "the words 'roast' and 'smoke' sounded wrong". "I didn't loose interes". "The mortar and pestle picture doesn't look ethiopian". "The popcorn is too close to the fire where the jabena is on, in real life it would catch fire" | s04 prompt now describes a mukecha by shape (one log, goblet, narrow waist) and an iron rod zenezena. s05 puts the popcorn basket far from the brazier. Voice: not changed (see below) |
+| P2, friend, in person | Story: "coffee in Ethiopia". Rounds: "abole, tona, bereka". The video "was saying bereka instead of bereka" (the transcript lost the difference; the voice says በረቃ, not በረካ). "the opening was a bit wide for jabana that I used to know". "I actually didn't lose interest" | s05 jebena: long narrow neck with a tiny opening plugged with grass, short spout at the base of the neck |
+| P3, diaspora viewer in London, phone call | "the sound was a bit uh lagged". "it would have been good if we could see a star the grass around the ceremony" (grass strewn on the floor). "he didn't lose uh uh an interest". "the woman actually look like uh Ethiopian but the the men are a bit they seem a bit Asian I don't know Indian". "The actual the color tone is great" | s04, s05, s08 now show fresh grass on the floor. s08 neighbours are described as Habesha, a man in a gabi and a woman with braids |
 
 What it told me:
 - All 3 named the story and all three rounds, and nobody lost interest. The audience goal in this file is met.
