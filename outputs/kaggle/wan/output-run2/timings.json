@@ -1,0 +1,66 @@
+{
+ "s02": {
+  "file": "s02-7a713156325d.mp4",
+  "status": "error",
+  "latency_s": 19.0,
+  "seed": 24918231,
+  "gpu": "Tesla T4, Tesla T4",
+  "params": {
+   "prompt": "The coffee beans tumble and slide across the hot metal pan while glowing embers flicker beneath; camera slowly descends toward the pan.",
+   "model": "Wan2.2-TI2V-5B",
+   "size": "1280*704",
+   "frames": 121,
+   "steps": 30,
+   "repo_commit": "1ea34ff"
+  },
+  "error": "Traceback (most recent call last):\n  File \"/kaggle/tmp/Wan2.2/generate.py\", line 17, in <module>\n    import wan\n  File \"/kaggle/tmp/Wan2.2/wan/__init__.py\", line 2, in <module>\n    from . import configs, distributed, modules\n  File \"/kaggle/tmp/Wan2.2/wan/modules/__init__.py\", line 6, in <module>\n    from .vae2_1 import Wan2_1_VAE\n  File \"/kaggle/tmp/Wan2.2/wan/modules/vae2_1.py\", line 8, in <module>\n    from einops import rearrange\nModuleNotFoundError: No module named 'einops'\n"
+ },
+ "s04": {
+  "file": "s04-18bba5bccc92.mp4",
+  "status": "error",
+  "latency_s": 5.4,
+  "seed": 49182033,
+  "gpu": "Tesla T4, Tesla T4",
+  "params": {
+   "prompt": "The pestle rhythmically lifts and strikes downward into the mortar, crushing the dark beans into coarse powder; camera remains in steady close framing.",
+   "model": "Wan2.2-TI2V-5B",
+   "size": "1280*704",
+   "frames": 121,
+   "steps": 30,
+   "repo_commit": "1ea34ff"
+  },
+  "error": "Traceback (most recent call last):\n  File \"/kaggle/tmp/Wan2.2/generate.py\", line 17, in <module>\n    import wan\n  File \"/kaggle/tmp/Wan2.2/wan/__init__.py\", line 2, in <module>\n    from . import configs, distributed, modules\n  File \"/kaggle/tmp/Wan2.2/wan/modules/__init__.py\", line 6, in <module>\n    from .vae2_1 import Wan2_1_VAE\n  File \"/kaggle/tmp/Wan2.2/wan/modules/vae2_1.py\", line 8, in <module>\n    from einops import rearrange\nModuleNotFoundError: No module named 'einops'\n"
+ },
+ "s06": {
+  "file": "s06-ec9106d21f62.mp4",
+  "status": "error",
+  "latency_s": 5.4,
+  "seed": 67182901,
+  "gpu": "Tesla T4, Tesla T4",
+  "params": {
+   "prompt": "Dark hot liquid flows in an unbroken stream from high above into the small cups, filling each consecutively; camera slowly tracks horizontally across the tray.",
+   "model": "Wan2.2-TI2V-5B",
+   "size": "1280*704",
+   "frames": 121,
+   "steps": 30,
+   "repo_commit": "1ea34ff"
+  },
+  "error": "Traceback (most recent call last):\n  File \"/kaggle/tmp/Wan2.2/generate.py\", line 17, in <module>\n    import wan\n  File \"/kaggle/tmp/Wan2.2/wan/__init__.py\", line 2, in <module>\n    from . import configs, distributed, modules\n  File \"/kaggle/tmp/Wan2.2/wan/modules/__init__.py\", line 6, in <module>\n    from .vae2_1 import Wan2_1_VAE\n  File \"/kaggle/tmp/Wan2.2/wan/modules/vae2_1.py\", line 8, in <module>\n    from einops import rearrange\nModuleNotFoundError: No module named 'einops'\n"
+ },
+ "s09": {
+  "file": "s09-0df8995023ea.mp4",
+  "status": "error",
+  "latency_s": 5.5,
+  "seed": 91823488,
+  "gpu": "Tesla T4, Tesla T4",
+  "params": {
+   "prompt": "Grandmother's hands gently pass the hot ceramic cup into the smaller hands of the youth, rising steam curling softly upward; camera stays centered on the exchange.",
+   "model": "Wan2.2-TI2V-5B",
+   "size": "1280*704",
+   "frames": 121,
+   "steps": 30,
+   "repo_commit": "1ea34ff"
+  },
+  "error": "Traceback (most recent call last):\n  File \"/kaggle/tmp/Wan2.2/generate.py\", line 17, in <module>\n    import wan\n  File \"/kaggle/tmp/Wan2.2/wan/__init__.py\", line 2, in <module>\n    from . import configs, distributed, modules\n  File \"/kaggle/tmp/Wan2.2/wan/modules/__init__.py\", line 6, in <module>\n    from .vae2_1 import Wan2_1_VAE\n  File \"/kaggle/tmp/Wan2.2/wan/modules/vae2_1.py\", line 8, in <module>\n    from einops import rearrange\nModuleNotFoundError: No module named 'einops'\n"
+ }
+}

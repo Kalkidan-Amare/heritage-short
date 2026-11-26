@@ -20,7 +20,7 @@ No keys? `PIPELINE_OFFLINE=1 make film` runs the whole thing with placeholders (
 | `make smoke` | calls each provider once and logs the latency to `runs.jsonl` |
 | `make script` | drafts `storyboard.draft.json` from my notes in `story.md`; I edit it into `storyboard.json` |
 | `make radio` | narration over a placeholder bed on black: the first cut to test with people |
-| `make wan` | sends the `video` shots to Wan 2.2 on a Kaggle GPU and downloads the clips |
+| `make wan` | sends the `video` shots to Wan 2.2 on a Kaggle GPU and downloads the clips (runs out of memory on a T4, see FAILURES.md F11; the film uses Ken Burns) |
 | `make music` | makes the ACE-Step music candidates on Kaggle |
 | `make film` | the full film, both formats |
 | `make test` | schema and cache tests, offline |
@@ -55,7 +55,7 @@ All providers are on free tiers. Measured latency, GPU minutes and list-price eq
 | `schema/` | JSON Schema, checked before every run |
 | `pipeline/` | one script per stage, see [ARCHITECTURE.md](ARCHITECTURE.md) |
 | `runs.jsonl` | one line per model call |
-| `outputs/` | generated files, kept so the run can be inspected |
+| `outputs/` | generated files. Keyframes, experiment images and Kaggle logs are committed for inspection; audio and video stay local (rebuilt by `make film`) |
 | [DESIGN.md](DESIGN.md) | audience, intent, the two user tests |
 | [EXPERIMENTS.md](EXPERIMENTS.md), [FAILURES.md](FAILURES.md) | what I tried, what broke |
 | [ETHICS.md](ETHICS.md) | consent, licences, labelling |

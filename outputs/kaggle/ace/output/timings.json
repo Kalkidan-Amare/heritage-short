@@ -1,0 +1,47 @@
+{
+ "9072530580d1-0": {
+  "file": "9072530580d1-0.wav",
+  "status": "ok",
+  "latency_s": 13.0,
+  "seed": 40192834,
+  "gpu": "Tesla T4",
+  "params": {
+   "caption": "Acoustic traditional Ethiopian meditative theme featuring delicate krar lyre arpeggios, gentle breathy washint flute, soft clay pot percussion, and warm ambient drone creating a deeply reflective, nostalgic mood., 64 BPM, A minor (anchihoye pentatonic mode)",
+   "duration": 84,
+   "instrumental": true,
+   "dit": "acestep-v15-turbo",
+   "thinking": false,
+   "repo_commit": "ca1e85f"
+  }
+ },
+ "9072530580d1-1": {
+  "file": "9072530580d1-1.wav",
+  "status": "ok",
+  "latency_s": 7.7,
+  "seed": 40192835,
+  "gpu": "Tesla T4",
+  "params": {
+   "caption": "Acoustic traditional Ethiopian meditative theme featuring delicate krar lyre arpeggios, gentle breathy washint flute, soft clay pot percussion, and warm ambient drone creating a deeply reflective, nostalgic mood., 64 BPM, A minor (anchihoye pentatonic mode)",
+   "duration": 84,
+   "instrumental": true,
+   "dit": "acestep-v15-turbo",
+   "thinking": false,
+   "repo_commit": "ca1e85f"
+  }
+ },
+ "9072530580d1-2": {
+  "file": "9072530580d1-2.wav",
+  "status": "ok",
+  "latency_s": 7.7,
+  "seed": 40192836,
+  "gpu": "Tesla T4",
+  "params": {
+   "caption": "Acoustic traditional Ethiopian meditative theme featuring delicate krar lyre arpeggios, gentle breathy washint flute, soft clay pot percussion, and warm ambient drone creating a deeply reflective, nostalgic mood., 64 BPM, A minor (anchihoye pentatonic mode)",
+   "duration": 84,
+   "instrumental": true,
+   "dit": "acestep-v15-turbo",
+   "thinking": false,
+   "repo_commit": "ca1e85f"
+  }
+ }
+}

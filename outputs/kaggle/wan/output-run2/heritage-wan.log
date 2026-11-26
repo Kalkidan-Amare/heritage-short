@@ -1,0 +1,191 @@
+[{"stream_name":"stdout","time":1.303156881,"data":"+ git clone --depth 1 https://github.com/Wan-Video/Wan2.2.git /kaggle/tmp/Wan2.2\n"}
+,{"stream_name":"stderr","time":1.334116913,"data":"Cloning into '/kaggle/tmp/Wan2.2'...\n"}
+,{"stream_name":"stdout","time":2.928212689,"data":"+ pip install -q uv\n"}
+,{"stream_name":"stdout","time":8.015065885,"data":"+ uv venv -p 3.12 /kaggle/tmp/wan-venv\n"}
+,{"stream_name":"stderr","time":8.025889974,"data":"warning: The `--system` flag has no effect, `uv venv` always ignores virtual environments when finding a Python interpreter; did you mean `--no-managed-python`?\n"}
+,{"stream_name":"stderr","time":8.296120146,"data":"Using CPython 3.12.3 interpreter at: /usr/bin/python3.12\n"}
+,{"stream_name":"stderr","time":8.296144787,"data":"Creating virtual environment at: /kaggle/tmp/wan-venv\n"}
+,{"stream_name":"stderr","time":8.296970103,"data":"Activate with: source /kaggle/tmp/wan-venv/bin/activate\n"}
+,{"stream_name":"stdout","time":8.298220862,"data":"+ grep -v flash_attn /kaggle/tmp/Wan2.2/requirements.txt \u003e /kaggle/tmp/req.txt \u0026\u0026 uv pip install -p /kaggle/tmp/wan-venv/bin/python --torch-backend cu126 -r /kaggle/tmp/req.txt\n"}
+,{"stream_name":"stderr","time":8.363951436,"data":"Using Python 3.12.3 environment at: /kaggle/tmp/wan-venv\n"}
+,{"stream_name":"stderr","time":10.604194025,"data":"Resolved 97 packages in 2.23s\n"}
+,{"stream_name":"stderr","time":10.632610143,"data":"Downloading torchvision (6.9MiB)\n"}
+,{"stream_name":"stderr","time":10.637723483,"data":"Downloading torch (828.9MiB)\n"}
+,{"stream_name":"stderr","time":10.686290174,"data":"Downloading pillow (6.8MiB)\n"}
+,{"stream_name":"stderr","time":10.686609745,"data":"Downloading networkx (2.0MiB)\n"}
+,{"stream_name":"stderr","time":10.686792445,"data":"Downloading pygments (1.2MiB)\n"}
+,{"stream_name":"stderr","time":10.718624348,"data":"Downloading nvidia-nccl-cu12 (276.3MiB)\n"}
+,{"stream_name":"stderr","time":10.718728014,"data":"Downloading diffusers (5.4MiB)\n"}
+,{"stream_name":"stderr","time":10.719118723,"data":"Downloading tiktoken (1.1MiB)\n"}
+,{"stream_name":"stderr","time":10.7194228,"data":"Downloading tokenizers (3.0MiB)\n"}
+,{"stream_name":"stderr","time":10.719819123,"data":"Downloading nvidia-cusparse-cu12 (206.5MiB)\n"}
+,{"stream_name":"stderr","time":10.720196753,"data":"Downloading opencv-python (60.1MiB)\n"}
+,{"stream_name":"stderr","time":10.720601894,"data":"Downloading cuda-bindings (5.8MiB)\n"}
+,{"stream_name":"stderr","time":10.720895304,"data":"Downloading imageio-ffmpeg (64.8MiB)\n"}
+,{"stream_name":"stderr","time":10.721303201,"data":"Downloading nvidia-nvjitlink-cu12 (37.9MiB)\n"}
+,{"stream_name":"stderr","time":10.721672231,"data":"Downloading sympy (6.0MiB)\n"}
+,{"stream_name":"stderr","time":10.72205511,"data":"Downloading nvidia-cublas-cu12 (374.9MiB)\n"}
+,{"stream_name":"stderr","time":10.722351021,"data":"Downloading nvidia-cusolver-cu12 (150.9MiB)\n"}
+,{"stream_name":"stderr","time":10.723225669,"data":"Downloading cryptography (4.5MiB)\n"}
+,{"stream_name":"stderr","time":10.723495109,"data":"Downloading nvidia-cufile-cu12 (1.1MiB)\n"}
+,{"stream_name":"stderr","time":10.723944868,"data":"Downloading nvidia-cudnn-cu12 (674.0MiB)\n"}
+,{"stream_name":"stderr","time":10.724261153,"data":"Downloading numpy (17.1MiB)\n"}
+,{"stream_name":"stderr","time":10.724694981,"data":"Downloading hf-xet (4.1MiB)\n"}
+,{"stream_name":"stderr","time":10.725023568,"data":"Downloading nvidia-cusparselt-cu12 (273.9MiB)\n"}
+,{"stream_name":"stderr","time":10.732745001,"data":"Downloading nvidia-cufft-cu12 (190.9MiB)\n"}
+,{"stream_name":"stderr","time":10.733073773,"data":"Downloading nvidia-nvshmem-cu12 (132.7MiB)\n"}
+,{"stream_name":"stderr","time":10.733538215,"data":"Downloading nvidia-cuda-nvrtc-cu12 (22.6MiB)\n"}
+,{"stream_name":"stderr","time":10.733985566,"data":"Downloading dashscope (1.0MiB)\n"}
+,{"stream_name":"stderr","time":10.734429548,"data":"Downloading nvidia-cuda-cupti-cu12 (8.5MiB)\n"}
+,{"stream_name":"stderr","time":10.735148328,"data":"Downloading transformers (9.9MiB)\n"}
+,{"stream_name":"stderr","time":10.735697997,"data":"Downloading aiohttp (1.8MiB)\n"}
+,{"stream_name":"stderr","time":10.736178967,"data":"Downloading pydantic-core (2.2MiB)\n"}
+,{"stream_name":"stderr","time":10.745014998,"data":"Downloading nvidia-curand-cu12 (53.7MiB)\n"}
+,{"stream_name":"stderr","time":10.793427928,"data":" Downloaded torchvision\n"}
+,{"stream_name":"stderr","time":10.844210207,"data":"Downloading triton (235.4MiB)\n"}
+,{"stream_name":"stderr","time":10.855569864,"data":"Downloading torchaudio (1.5MiB)\n"}
+,{"stream_name":"stderr","time":10.962800776,"data":" Downloaded torchaudio\n"}
+,{"stream_name":"stderr","time":11.682131267,"data":" Downloaded dashscope\n"}
+,{"stream_name":"stderr","time":11.682341201,"data":" Downloaded tiktoken\n"}
+,{"stream_name":"stderr","time":11.688014247,"data":" Downloaded pygments\n"}
+,{"stream_name":"stderr","time":11.699624407,"data":" Downloaded nvidia-cufile-cu12\n"}
+,{"stream_name":"stderr","time":12.1014264,"data":" Downloaded aiohttp\n"}
+,{"stream_name":"stderr","time":12.233661996,"data":" Downloaded pydantic-core\n"}
+,{"stream_name":"stderr","time":12.238226798,"data":" Downloaded networkx\n"}
+,{"stream_name":"stderr","time":12.599656947,"data":" Downloaded tokenizers\n"}
+,{"stream_name":"stderr","time":13.157715994,"data":" Downloaded hf-xet\n"}
+,{"stream_name":"stderr","time":13.407411843,"data":" Downloaded cryptography\n"}
+,{"stream_name":"stderr","time":13.736617845,"data":" Downloaded diffusers\n"}
+,{"stream_name":"stderr","time":13.917843135,"data":" Downloaded cuda-bindings\n"}
+,{"stream_name":"stderr","time":14.011189768,"data":" Downloaded sympy\n"}
+,{"stream_name":"stderr","time":14.248473445,"data":" Downloaded pillow\n"}
+,{"stream_name":"stderr","time":14.857153373,"data":" Downloaded nvidia-cuda-cupti-cu12\n"}
+,{"stream_name":"stderr","time":15.306881205,"data":" Downloaded transformers\n"}
+,{"stream_name":"stderr","time":17.376109004,"data":" Downloaded numpy\n"}
+,{"stream_name":"stderr","time":18.736627724999998,"data":" Downloaded nvidia-cuda-nvrtc-cu12\n"}
+,{"stream_name":"stderr","time":19.631468958,"data":" Downloaded triton\n"}
+,{"stream_name":"stderr","time":22.443953469,"data":" Downloaded nvidia-nvjitlink-cu12\n"}
+,{"stream_name":"stderr","time":31.594490578,"data":" Downloaded nvidia-curand-cu12\n"}
+,{"stream_name":"stderr","time":32.604464606,"data":" Downloaded opencv-python\n"}
+,{"stream_name":"stderr","time":33.272586962,"data":" Downloaded imageio-ffmpeg\n"}
+,{"stream_name":"stderr","time":40.119906611,"data":" Downloaded torch\n"}
+,{"stream_name":"stderr","time":43.382776832,"data":" Downloaded nvidia-nvshmem-cu12\n"}
+,{"stream_name":"stderr","time":44.76308671,"data":" Downloaded nvidia-cusolver-cu12\n"}
+,{"stream_name":"stderr","time":47.569296111,"data":" Downloaded nvidia-cufft-cu12\n"}
+,{"stream_name":"stderr","time":52.066474231,"data":" Downloaded nvidia-cusparse-cu12\n"}
+,{"stream_name":"stderr","time":55.441520839,"data":" Downloaded nvidia-nccl-cu12\n"}
+,{"stream_name":"stderr","time":55.54526475,"data":" Downloaded nvidia-cusparselt-cu12\n"}
+,{"stream_name":"stderr","time":58.126235966,"data":" Downloaded nvidia-cublas-cu12\n"}
+,{"stream_name":"stderr","time":66.56356451,"data":" Downloaded nvidia-cudnn-cu12\n"}
+,{"stream_name":"stderr","time":66.563989623,"data":"Prepared 97 packages in 55.95s\n"}
+,{"stream_name":"stderr","time":66.893723304,"data":"Installed 97 packages in 329ms\n"}
+,{"stream_name":"stderr","time":66.893894544,"data":" + accelerate==1.16.0\n"}
+,{"stream_name":"stderr","time":66.894000572,"data":" + aiohappyeyeballs==2.7.1\n"}
+,{"stream_name":"stderr","time":66.894136682,"data":" + aiohttp==3.14.5\n"}
+,{"stream_name":"stderr","time":66.89414697,"data":" + aiosignal==1.4.0\n"}
+,{"stream_name":"stderr","time":66.89422708,"data":" + annotated-doc==0.0.7\n"}
+,{"stream_name":"stderr","time":66.894320102,"data":" + annotated-types==0.8.0\n"}
+,{"stream_name":"stderr","time":66.894361079,"data":" + anyio==4.16.0\n"}
+,{"stream_name":"stderr","time":66.894476686,"data":" + attrs==26.1.0\n"}
+,{"stream_name":"stderr","time":66.894534114,"data":" + certifi==2026.11.20\n"}
+,{"stream_name":"stderr","time":66.894587387,"data":" + cffi==2.1.1\n"}
+,{"stream_name":"stderr","time":66.895004185,"data":" + charset-normalizer==3.5.3\n"}
+,{"stream_name":"stderr","time":66.895018613,"data":" + click==8.5.1\n"}
+,{"stream_name":"stderr","time":66.895025254,"data":" + cryptography==50.0.2\n"}
+,{"stream_name":"stderr","time":66.895031453,"data":" + cuda-bindings==12.9.11\n"}
+,{"stream_name":"stderr","time":66.895037294,"data":" + cuda-pathfinder==1.9.1\n"}
+,{"stream_name":"stderr","time":66.895043117,"data":" + cuda-toolkit==12.6.3\n"}
+,{"stream_name":"stderr","time":66.89504841,"data":" + dashscope==2.1.1\n"}
+,{"stream_name":"stderr","time":66.895054643,"data":" + diffusers==0.39.0\n"}
+,{"stream_name":"stderr","time":66.895060445,"data":" + easydict==1.14\n"}
+,{"stream_name":"stderr","time":66.895079539,"data":" + fastapi==0.165.0\n"}
+,{"stream_name":"stderr","time":66.8950856,"data":" + filelock==4.3.1\n"}
+,{"stream_name":"stderr","time":66.895179761,"data":" + frozenlist==1.8.0\n"}
+,{"stream_name":"stderr","time":66.895238427,"data":" + fsspec==2026.9.0\n"}
+,{"stream_name":"stderr","time":66.89530301,"data":" + ftfy==6.3.1\n"}
+,{"stream_name":"stderr","time":66.895337709,"data":" + h11==0.16.0\n"}
+,{"stream_name":"stderr","time":66.89544719,"data":" + hf-xet==1.8.0\n"}
+,{"stream_name":"stderr","time":66.895467572,"data":" + httpcore==1.0.9\n"}
+,{"stream_name":"stderr","time":66.895537434,"data":" + httpx==0.28.1\n"}
+,{"stream_name":"stderr","time":66.895602939,"data":" + httpx-sse==0.4.3\n"}
+,{"stream_name":"stderr","time":66.89566983899999,"data":" + huggingface-hub==0.36.2\n"}
+,{"stream_name":"stderr","time":66.895709569,"data":" + idna==3.20\n"}
+,{"stream_name":"stderr","time":66.895790779,"data":" + imageio==2.38.2\n"}
+,{"stream_name":"stderr","time":66.895852441,"data":" + imageio-ffmpeg==0.8.1\n"}
+,{"stream_name":"stderr","time":66.895936954,"data":" + importlib-metadata==10.2.0\n"}
+,{"stream_name":"stderr","time":66.895992201,"data":" + jinja2==3.1.6\n"}
+,{"stream_name":"stderr","time":66.896091501,"data":" + lazy-importer==0.1.0\n"}
+,{"stream_name":"stderr","time":66.896149281,"data":" + markdown-it-py==4.3.0\n"}
+,{"stream_name":"stderr","time":66.896508217,"data":" + markupsafe==3.0.4\n"}
+,{"stream_name":"stderr","time":66.896520074,"data":" + mdurl==0.1.2\n"}
+,{"stream_name":"stderr","time":66.896525925,"data":" + mpmath==1.3.0\n"}
+,{"stream_name":"stderr","time":66.896531549,"data":" + multidict==7.2.1\n"}
+,{"stream_name":"stderr","time":66.896562362,"data":" + networkx==3.7\n"}
+,{"stream_name":"stderr","time":66.896583227,"data":" + numpy==1.26.4\n"}
+,{"stream_name":"stderr","time":66.896614121,"data":" + nvidia-cublas-cu12==12.6.4.1\n"}
+,{"stream_name":"stderr","time":66.89667781,"data":" + nvidia-cuda-cupti-cu12==12.6.80\n"}
+,{"stream_name":"stderr","time":66.89676321,"data":" + nvidia-cuda-nvrtc-cu12==12.6.85\n"}
+,{"stream_name":"stderr","time":66.896830289,"data":" + nvidia-cuda-runtime-cu12==12.6.77\n"}
+,{"stream_name":"stderr","time":66.896887691,"data":" + nvidia-cudnn-cu12==9.10.2.21\n"}
+,{"stream_name":"stderr","time":66.897018724,"data":" + nvidia-cufft-cu12==11.3.0.4\n"}
+,{"stream_name":"stderr","time":66.897436599,"data":" + nvidia-cufile-cu12==1.11.1.6\n"}
+,{"stream_name":"stderr","time":66.897444291,"data":" + nvidia-curand-cu12==10.3.7.77\n"}
+,{"stream_name":"stderr","time":66.89744857,"data":" + nvidia-cusolver-cu12==11.7.1.2\n"}
+,{"stream_name":"stderr","time":66.897452575,"data":" + nvidia-cusparse-cu12==12.5.4.2\n"}
+,{"stream_name":"stderr","time":66.897456035,"data":" + nvidia-cusparselt-cu12==0.7.1\n"}
+,{"stream_name":"stderr","time":66.897459514,"data":" + nvidia-nccl-cu12==2.29.3\n"}
+,{"stream_name":"stderr","time":66.897558291,"data":" + nvidia-nvjitlink-cu12==12.9.86\n"}
+,{"stream_name":"stderr","time":66.897570518,"data":" + nvidia-nvshmem-cu12==3.4.5\n"}
+,{"stream_name":"stderr","time":66.897595266,"data":" + nvidia-nvtx-cu12==12.6.77\n"}
+,{"stream_name":"stderr","time":66.897670653,"data":" + opencv-python==4.11.0.86\n"}
+,{"stream_name":"stderr","time":66.897726746,"data":" + opentelemetry-api==1.45.2\n"}
+,{"stream_name":"stderr","time":66.897786118,"data":" + opentelemetry-sdk==1.45.2\n"}
+,{"stream_name":"stderr","time":66.897896241,"data":" + opentelemetry-semantic-conventions==0.66b2\n"}
+,{"stream_name":"stderr","time":66.897992796,"data":" + packaging==26.4\n"}
+,{"stream_name":"stderr","time":66.898007317,"data":" + pillow==13.0.0\n"}
+,{"stream_name":"stderr","time":66.898114022,"data":" + propcache==0.5.4\n"}
+,{"stream_name":"stderr","time":66.898206674,"data":" + psutil==7.2.2\n"}
+,{"stream_name":"stderr","time":66.898213494,"data":" + pycparser==3.12\n"}
+,{"stream_name":"stderr","time":66.89828805,"data":" + pydantic==2.14.4\n"}
+,{"stream_name":"stderr","time":66.898362005,"data":" + pydantic-core==2.50.5\n"}
+,{"stream_name":"stderr","time":66.89842319,"data":" + pygments==2.21.0\n"}
+,{"stream_name":"stderr","time":66.898491033,"data":" + pyyaml==6.0.4\n"}
+,{"stream_name":"stderr","time":66.898575398,"data":" + regex==2026.11.25\n"}
+,{"stream_name":"stderr","time":66.89863669,"data":" + requests==2.34.2\n"}
+,{"stream_name":"stderr","time":66.898751235,"data":" + rich==15.0.0\n"}
+,{"stream_name":"stderr","time":66.898811594,"data":" + safetensors==0.8.0\n"}
+,{"stream_name":"stderr","time":66.89890651,"data":" + setuptools==84.2.1\n"}
+,{"stream_name":"stderr","time":66.898914105,"data":" + shellingham==1.5.4\n"}
+,{"stream_name":"stderr","time":66.8989896,"data":" + starlette==1.10.0\n"}
+,{"stream_name":"stderr","time":66.899046603,"data":" + sympy==1.14.0\n"}
+,{"stream_name":"stderr","time":66.899147384,"data":" + tenacity==9.2.1\n"}
+,{"stream_name":"stderr","time":66.899191272,"data":" + tiktoken==0.14.0\n"}
+,{"stream_name":"stderr","time":66.899232465,"data":" + tokenizers==0.21.4\n"}
+,{"stream_name":"stderr","time":66.899313377,"data":" + torch==2.14.1+cu126\n"}
+,{"stream_name":"stderr","time":66.89942962,"data":" + torchaudio==2.11.0+cu126\n"}
+,{"stream_name":"stderr","time":66.899535722,"data":" + torchvision==0.29.1+cu126\n"}
+,{"stream_name":"stderr","time":66.899613538,"data":" + tqdm==4.70.1\n"}
+,{"stream_name":"stderr","time":66.899683794,"data":" + transformers==4.51.3\n"}
+,{"stream_name":"stderr","time":66.899752099,"data":" + triton==3.8.0\n"}
+,{"stream_name":"stderr","time":66.89982087,"data":" + typer==0.29.3\n"}
+,{"stream_name":"stderr","time":66.900151873,"data":" + typing-extensions==4.16.0\n"}
+,{"stream_name":"stderr","time":66.900160499,"data":" + typing-inspection==0.4.5\n"}
+,{"stream_name":"stderr","time":66.900165203,"data":" + urllib3==2.8.0\n"}
+,{"stream_name":"stderr","time":66.900169466,"data":" + uvicorn==0.54.0\n"}
+,{"stream_name":"stderr","time":66.900206921,"data":" + wcwidth==0.9.5\n"}
+,{"stream_name":"stderr","time":66.900233417,"data":" + websocket-client==1.9.2\n"}
+,{"stream_name":"stderr","time":66.900308533,"data":" + yarl==1.25.1\n"}
+,{"stream_name":"stderr","time":66.900401343,"data":" + zipp==4.1.2\n"}
+,{"stream_name":"stderr","time":68.530311282,"data":"\rFetching 23 files:   0%|          | 0/23 [00:00\u003c?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":222.933486381,"data":"\rFetching 23 files:   4%|▍         | 1/23 [00:00\u003c00:05,  4.27it/s]\rFetching 23 files:  26%|██▌       | 6/23 [00:00\u003c00:01, 14.84it/s]\rFetching 23 files:  39%|███▉      | 9/23 [00:01\u003c00:02,  4.78it/s]\rFetching 23 files:  48%|████▊     | 11/23 [00:01\u003c00:02,  5.52it/s]\rFetching 23 files:  52%|█████▏    | 12/23 [00:02\u003c00:02,  5.33it/s]\rFetching 23 files:  57%|█████▋    | 13/23 [00:02\u003c00:02,  4.60it/s]\rFetching 23 files:  61%|██████    | 14/23 [00:06\u003c00:09,  1.04s/it]\rFetching 23 files:  65%|██████▌   | 15/23 [00:06\u003c00:06,  1.16it/s]\rFetching 23 files:  70%|██████▉   | 16/23 [00:08\u003c00:07,  1.06s/it]\rFetching 23 files:  74%|███████▍  | 17/23 [00:09\u003c00:05,  1.03it/s]\rFetching 23 files:  78%|███████▊  | 18/23 [00:19\u003c00:18,  3.61s/it]\rFetching 23 files:  87%|████████▋ | 20/23 [00:29\u003c00:12,  4.22s/it]\rFetching 23 files:  91%|█████████▏| 21/23 [02:34\u003c01:06, 33.14s/it]\rFetching 23 files: 100%|██████████| 23/23 [02:34\u003c00:00,  6.72s/it]\n"}
+,{"stream_name":"stdout","time":247.168506178,"data":"s02 error 19.0 s\n"}
+,{"stream_name":"stdout","time":253.19432298,"data":"s04 error 5.4 s\n"}
+,{"stream_name":"stdout","time":259.18313148,"data":"s06 error 5.4 s\n"}
+,{"stream_name":"stdout","time":265.235270358,"data":"s09 error 5.5 s\n"}
+,{"stream_name":"stderr","time":267.419319439,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":267.419350087,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":267.629358593,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":267.629382014,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":268.484012002,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":269.422040557,"data":"[NbConvertApp] Writing 294562 bytes to __results__.html\n"}
+]

@@ -1,0 +1,13 @@
+s01        gemini-3.5-flash-lite    gemini-3.8-flash-tts         CER 20.0%  ኔልጂ ሰሩ ታጎዝጉዟል እጣኑም ይጨሳል ቀረብ በይ
+s01        gemini-3.1-flash-lite    gemini-3.8-flash-tts         CER 36.0%  ኔሌጂ። ሳሩ ተቆዝቆዝዋል፡፡ እጣኑም ይጨሳል፡፡ ቀረብ በል።
+s01        gemini-3.6-flash         gemini-3.8-flash-tts         CER 28.0%  ነይልኝ ሳሩም ተጎስጉሷል ዕጣኑም ይጨሳል ቅርብ በል
+s02        gemini-3.5-flash-lite    gemini-3.8-flash-lite-tts    CER 23.1%  ይሁንና በመጣዱ ላይ ይቆላል እስኪ ጣቁር እንጠብቃለን።
+s02        gemini-3.1-flash-lite    gemini-3.8-flash-lite-tts    CER 11.5%  ፑን ናው በ መጣዱ ላይ ይቆላል። እስኪ ጠቁር እንጠብቃለን።
+s02        gemini-3.6-flash         gemini-3.8-flash-lite-tts    CER 11.5%  ቡናው በጣዱ ላይ ይፈላል። እስኪ ጥቁር እንጠብቃለን።
+s03        gemini-3.5-flash-lite    gemini-3.8-flash-tts         CER 36.7%  እጅ እሱን በጀህ እጅ ወደ ረሳችሁ ሰዓት የቤታችን መአዛ ይኸው ነው
+s03        gemini-3.1-flash-lite    gemini-3.8-flash-tts         CER 30.0%  እዩ ስንበት እጀቹ ወደ ራሳችሁ ሰሁት የቤታችን መዓዛ ይኸው ነው።
+s03        gemini-3.6-flash         gemini-3.8-flash-tts         CER 16.7%  እሱን በእጃችሁ ወደራሳችሁ ሳባችሁ የቤታችን መአዛ ይኸው ነው።
+s04        gemini-3.5-flash-lite    gemini-3.8-flash-tts         CER 14.8%  በሙቅ ጭና፣ በዘነዘና፣ ፍሪውን በጃችን እንወቅጠዋለን።
+s04        gemini-3.1-flash-lite    gemini-3.8-flash-tts         CER 11.1%  በመቅቻና በዘነዘና ፍሪውን በእጃችን እንወቅጠዋለን።
+s04        gemini-3.6-flash         gemini-3.8-flash-tts         CER  7.4%  በሙከቻና በዘነዘና ፍሬውን በእጃችን እንወቅጣለን።
+s05        gemini-3.5-flash-lite    gemini-3.8-flash-lite-tts    CER 10.3%  ጀበናው በከሰሉይ ረጋ ብሎ ይፈላል ፈንዲሻው ሚቀርባል

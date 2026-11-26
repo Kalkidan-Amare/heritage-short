@@ -17,7 +17,7 @@ used as a reference. If a real relative is added later, their consent goes in th
 | Storyboard draft | Gemini 3.8 Flash | Gemini API terms (outputs are mine to use) | https://ai.google.dev/gemini-api/terms |
 | Narration | Gemini 3.8 Flash TTS, voice Gacrux | Gemini API terms | https://ai.google.dev/gemini-api/terms |
 | Keyframes | FLUX.2 klein 4B on Cloudflare Workers AI | Apache 2.0 (model card, checked 2026-11-26) | https://huggingface.co/black-forest-labs/FLUX.2-klein-4B |
-| Moving shots | Wan 2.2 TI2V-5B on Kaggle | Apache 2.0 (model card, checked 2026-11-26) | https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B |
+| Moving shots (tried, not in the film: F11) | Wan 2.2 TI2V-5B on Kaggle | Apache 2.0 (model card, checked 2026-11-26) | https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B |
 | Score | ACE-Step 1.5 on Kaggle | MIT (model card, checked 2026-11-26); outputs may be used commercially | https://huggingface.co/ACE-Step/Ace-Step1.5 |
 | Fonts | Noto Sans Ethiopic, DejaVu Sans | SIL OFL / free licence | system packages |
 

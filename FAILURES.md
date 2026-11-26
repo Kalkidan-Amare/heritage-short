@@ -68,3 +68,12 @@ What broke, what I tried, what fixed it.
 - Changes: the kernel appends an SDPA `flash_attention` that keeps the key padding mask (the stock fallback drops
   it), runs the DiT in fp16, and cuts the clip to 49 frames and 20 steps (`shots.WAN`). One shot (s06) is sent
   first as a timing test (`WAN_SHOTS=s06 make wan`), with a 2.5 h cap per shot.
+
+## F11: Wan 2.2 TI2V-5B ran out of GPU memory on a T4 (2026-11-26)
+- Broke: run 3 (one shot, s06, 49 frames, 20 steps, fp16, SDPA patch from F10) got through setup and weights, then
+  died after 456 s with `torch.OutOfMemoryError` in `norm_q` (14.49 of 14.56 GiB in use;
+  `outputs/kaggle/wan/output/timings.json`). 1280x704 is the only size the 5B model card lists for TI2V.
+- Not fixed: the next steps would be offloading the T5 encoder and VAE to CPU, or a smaller size the model was not
+  trained on. Each try costs about 30 minutes of queue and setup, and the deadline was 4 hours away.
+- Decision: the film keeps Ken Burns motion from the keyframes. The end card no longer credits Wan
+  (`storyboard.json` `end_card`). The Wan stage, kernel and cache stay in the repo for a bigger GPU.

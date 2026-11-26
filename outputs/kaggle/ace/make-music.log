@@ -1,0 +1,21 @@
+.venv/bin/python pipeline/kaggle_jobs.py music
+  sending 3 music candidates to ACE-Step on Kaggle
+  heritage-ace: kalkidanamareb/heritage-ace has status "kernelworkerstatus.queued" (1 min)
+  heritage-ace: kalkidanamareb/heritage-ace has status "kernelworkerstatus.queued" (2 min)
+  heritage-ace: kalkidanamareb/heritage-ace has status "kernelworkerstatus.queued" (3 min)
+  heritage-ace: kalkidanamareb/heritage-ace has status "kernelworkerstatus.queued" (4 min)
+  heritage-ace: kalkidanamareb/heritage-ace has status "kernelworkerstatus.queued" (5 min)
+  heritage-ace: kalkidanamareb/heritage-ace has status "kernelworkerstatus.queued" (7 min)
+  heritage-ace: kalkidanamareb/heritage-ace has status "kernelworkerstatus.queued" (8 min)
+  heritage-ace: kalkidanamareb/heritage-ace has status "kernelworkerstatus.queued" (9 min)
+  heritage-ace: kalkidanamareb/heritage-ace has status "kernelworkerstatus.queued" (10 min)
+  heritage-ace: kalkidanamareb/heritage-ace has status "kernelworkerstatus.queued" (11 min)
+  heritage-ace: kalkidanamareb/heritage-ace has status "kernelworkerstatus.queued" (12 min)
+  heritage-ace: kalkidanamareb/heritage-ace has status "kernelworkerstatus.queued" (13 min)
+  heritage-ace: kalkidanamareb/heritage-ace has status "kernelworkerstatus.queued" (14 min)
+  heritage-ace: kalkidanamareb/heritage-ace has status "kernelworkerstatus.running" (15 min)
+  heritage-ace: kalkidanamareb/heritage-ace has status "kernelworkerstatus.running" (16 min)
+  heritage-ace: kalkidanamareb/heritage-ace has status "kernelworkerstatus.running" (17 min)
+  heritage-ace: kalkidanamareb/heritage-ace has status "kernelworkerstatus.running" (18 min)
+  heritage-ace: kalkidanamareb/heritage-ace has status "kernelworkerstatus.complete" (19 min)
+  downloaded 3 files

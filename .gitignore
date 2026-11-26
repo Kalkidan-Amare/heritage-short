@@ -2,6 +2,14 @@
 .venv/
 __pycache__/
 *.pyc
-# generated media stays local; runs.jsonl is committed because it is the evidence for COSTS and EXPERIMENTS
-outputs/
+# generated audio and video stay local; runs.jsonl is committed because it is the evidence for COSTS and EXPERIMENTS.
+# Keyframes, experiment images and the Kaggle kernel logs are committed so the run can be inspected (FAILURES.md cites them).
+outputs/*
+!outputs/keyframes/
+!outputs/experiments/
+!outputs/kaggle/
+outputs/kaggle/*/data/
+outputs/kaggle/*/kernel/
+outputs/kaggle/**/*.mp4
+outputs/kaggle/**/*.wav
 storyboard.draft.json

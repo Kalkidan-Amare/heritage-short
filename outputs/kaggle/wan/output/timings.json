@@ -1,0 +1,18 @@
+{
+ "s06": {
+  "file": "s06-1c784ea12720.mp4",
+  "status": "error",
+  "latency_s": 456.5,
+  "seed": 67182901,
+  "gpu": "Tesla T4, Tesla T4",
+  "params": {
+   "prompt": "Dark hot liquid flows in an unbroken stream from high above into the small cups, filling each consecutively; camera slowly tracks horizontally across the tray.",
+   "model": "Wan2.2-TI2V-5B",
+   "size": "1280*704",
+   "frames": 49,
+   "steps": 20,
+   "repo_commit": "1ea34ff"
+  },
+  "error": "^\n  File \"/kaggle/tmp/Wan2.2/wan/modules/model.py\", line 138, in qkv_fn\n    q = self.norm_q(self.q(x)).view(b, s, n, d)\n        ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/kaggle/tmp/wan-venv/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1783, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/kaggle/tmp/wan-venv/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1794, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/kaggle/tmp/Wan2.2/wan/modules/model.py\", line 82, in forward\n    return self._norm(x.float()).type_as(x) * self.weight\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/kaggle/tmp/Wan2.2/wan/modules/model.py\", line 85, in _norm\n    return x * torch.rsqrt(x.pow(2).mean(dim=-1, keepdim=True) + self.eps)\n                           ^^^^^^^^\ntorch.OutOfMemoryError: CUDA out of memory. Tried to allocate 136.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 72.81 MiB is free. Including non-PyTorch memory, this process has 14.49 GiB memory in use. Of the allocated memory 14.10 GiB is allocated by PyTorch, and 265.70 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)\n"
+ }
+}
